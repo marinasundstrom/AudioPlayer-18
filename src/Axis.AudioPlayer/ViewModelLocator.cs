@@ -14,6 +14,7 @@ namespace Axis.AudioPlayer
             var containerBuilder = new ContainerBuilder();
 
             containerBuilder.RegisterType<AppContext>()
+                            .As<IAppContext>()
                             .SingleInstance();
 
             containerBuilder.RegisterType<MessageBus>()
@@ -32,8 +33,6 @@ namespace Axis.AudioPlayer
             var autofacServiceLocator = new AutofacServiceLocator(container);
             ServiceLocator.SetLocatorProvider(() => autofacServiceLocator);
         }
-
-        public AppContext AppContext => ServiceLocator.Current.GetInstance<AppContext>();
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
     }

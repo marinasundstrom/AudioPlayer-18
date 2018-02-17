@@ -6,7 +6,7 @@ using MvvmUtils;
 
 namespace Axis.AudioPlayer
 {
-    public class AppContext
+    public class AppContext : IAppContext
     {
         public AppContext(IMessageBus messageBus, IDataService dataService)
         {

@@ -2,8 +2,7 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:local="using:Axis.AudioPlayer"
-             x:Class="Axis.AudioPlayer.App"
-             BindingContext="{Binding AppContext, Source={StaticResource Locator}}">
+             x:Class="Axis.AudioPlayer.App">
     
     <Application.Resources>
         <ResourceDictionary>

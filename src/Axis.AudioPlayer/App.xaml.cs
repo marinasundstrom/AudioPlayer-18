@@ -1,6 +1,8 @@
 ﻿using Xamarin.Forms;
 using Axis.AudioPlayer.Views;
 using System.Threading.Tasks;
+using MvvmUtils;
+using CommonServiceLocator;
 
 namespace Axis.AudioPlayer
 {
@@ -15,6 +17,9 @@ namespace Axis.AudioPlayer
 
         protected override async void OnStart()
         {
+            if (DesignerLibrary.IsInDesignMode) 
+                return;
+
             // Handle when your app starts
 
             await LoadContext();
@@ -40,8 +45,8 @@ namespace Axis.AudioPlayer
             MainPage = new MainPage();
         }
 
-        private Task LoadContext() => (BindingContext as AppContext).LoadContext();
+        private Task LoadContext() => ServiceLocator.Current.GetInstance<IAppContext>().LoadContext();
 
-        private Task SaveContext() => (BindingContext as AppContext).SaveContext();
+        private Task SaveContext() => ServiceLocator.Current.GetInstance<IAppContext>().SaveContext();
     }
 }
