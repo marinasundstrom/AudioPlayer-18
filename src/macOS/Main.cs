@@ -6,6 +6,8 @@ namespace Axis.AudioPlayer.macOS
     {
         static void Main(string[] args)
         {
+            SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
+
             NSApplication.Init();
             NSApplication.SharedApplication.Delegate = new AppDelegate();
             NSApplication.SharedApplication.MainMenu = new NSMenu();

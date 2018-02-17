@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using Axis.AudioPlayer.Services;
 using MvvmUtils;
 
 namespace Axis.AudioPlayer.ViewModels
@@ -9,9 +10,11 @@ namespace Axis.AudioPlayer.ViewModels
         private RelayCommand clickCommand;
         private int count;
 
-        public MainViewModel()
+        public MainViewModel(IDataService dataService)
         {
             ButtonText = "Click me!";
+
+            dataService.DoSomething().Wait();
         }
 
         public string ButtonText

@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axis.AudioPlayer.Core", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axis.AudioPlayer.Core.Tests", "tests\Axis.AudioPlayer.Core.Tests\Axis.AudioPlayer.Core.Tests.csproj", "{FFBBFD3E-E8F1-40B9-BE3B-384DA295D92B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axis.AudioPlayer.Data", "src\Axis.AudioPlayer.Data\Axis.AudioPlayer.Data.csproj", "{3323A81C-9BC3-45CC-A56F-1D79B3DFC546}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -85,6 +87,14 @@ Global
 		{FFBBFD3E-E8F1-40B9-BE3B-384DA295D92B}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{FFBBFD3E-E8F1-40B9-BE3B-384DA295D92B}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{FFBBFD3E-E8F1-40B9-BE3B-384DA295D92B}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{3323A81C-9BC3-45CC-A56F-1D79B3DFC546}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{3323A81C-9BC3-45CC-A56F-1D79B3DFC546}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{3323A81C-9BC3-45CC-A56F-1D79B3DFC546}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{3323A81C-9BC3-45CC-A56F-1D79B3DFC546}.Release|iPhone.Build.0 = Release|Any CPU
+		{3323A81C-9BC3-45CC-A56F-1D79B3DFC546}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{3323A81C-9BC3-45CC-A56F-1D79B3DFC546}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{3323A81C-9BC3-45CC-A56F-1D79B3DFC546}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{3323A81C-9BC3-45CC-A56F-1D79B3DFC546}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D705AC8D-9D4A-4AD9-B4C2-EEE80F36CB7C} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
@@ -95,5 +105,6 @@ Global
 		{F198DF18-33E1-4FB4-ACF4-D0D3B1471D05} = {773C7445-1821-47B4-96C4-41EBD7E39FF4}
 		{7F9D4A4B-0707-4502-8300-3E75ABA5FECF} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
 		{FFBBFD3E-E8F1-40B9-BE3B-384DA295D92B} = {773C7445-1821-47B4-96C4-41EBD7E39FF4}
+		{3323A81C-9BC3-45CC-A56F-1D79B3DFC546} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
 	EndGlobalSection
 EndGlobal

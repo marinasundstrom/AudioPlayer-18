@@ -2,12 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Axis.AudioPlayer</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="ViewModels\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MvvmUtils\MvvmUtils.csproj" />
+    <ProjectReference Include="..\Axis.AudioPlayer.Data\Axis.AudioPlayer.Data.csproj" />
   </ItemGroup>
 </Project>

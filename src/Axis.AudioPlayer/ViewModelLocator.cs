@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Extras.CommonServiceLocator;
+using Axis.AudioPlayer.Services;
 using Axis.AudioPlayer.ViewModels;
 using CommonServiceLocator;
 
@@ -12,6 +13,10 @@ namespace Axis.AudioPlayer
             var containerBuilder = new ContainerBuilder();
 
             containerBuilder.RegisterType<MainViewModel>().SingleInstance();
+
+            containerBuilder.RegisterType<DataService>()
+                            .As<IDataService>()
+                            .InstancePerDependency();
 
             var container = containerBuilder.Build();
 
