@@ -9,33 +9,33 @@ namespace Axis.AudioPlayer.Core.Tests
         [Fact]
         public void ExecuteClickCommand()
         {
-            var viewModel = new MainViewModel();
+            var mainViewModel = new MainViewModel();
 
-            Assert.Equal(viewModel.ButtonText, "Click me!");
+            Assert.Equal("Click me!", mainViewModel.ButtonText);
 
-            viewModel.ClickCommand.Execute(null);
+            mainViewModel.ClickCommand.Execute(null);
 
-            Assert.Equal(viewModel.ButtonText, "Once");
+            Assert.Equal("Once", mainViewModel.ButtonText);
 
-            viewModel.ClickCommand.Execute(null);
+            mainViewModel.ClickCommand.Execute(null);
 
-            Assert.Equal(viewModel.ButtonText, "Twice");
+            Assert.Equal("Twice", mainViewModel.ButtonText);
 
-            viewModel.ClickCommand.Execute(null);
+            mainViewModel.ClickCommand.Execute(null);
 
-            Assert.Equal(viewModel.ButtonText, "Thrice");
+            Assert.Equal("Thrice", mainViewModel.ButtonText);
 
-            viewModel.ClickCommand.Execute(null);
+            mainViewModel.ClickCommand.Execute(null);
 
-            Assert.Equal(viewModel.ButtonText, "4 times");
+            Assert.Equal("4 times", mainViewModel.ButtonText);
 
-            viewModel.ClickCommand.Execute(null);
+            mainViewModel.ClickCommand.Execute(null);
 
-            Assert.Equal(viewModel.ButtonText, "5 times");
+            Assert.Equal("5 times", mainViewModel.ButtonText);
 
-            viewModel.ClickCommand.Execute(null);
+            mainViewModel.ClickCommand.Execute(null);
 
-            Assert.Equal(viewModel.ButtonText, "6 times");
+            Assert.Equal("6 times", mainViewModel.ButtonText);
         }
     }
 }
