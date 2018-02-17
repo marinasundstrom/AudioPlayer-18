@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageVersion>0.0.1</PackageVersion>
+    <Authors>Robert Sundström</Authors>
+    <Title>MvvmUtils</Title>
+    <PackageId>MvvmUtils</PackageId>
+    <Description>Provides utilities for implementing the Model-View-ViewModel (MVVM) pattern</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Reactive\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Reactive" Version="3.1.1" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.4.1" />
+    <PackageReference Include="NuGet.Build.Packaging" Version="0.2.0" />
+  </ItemGroup>
+</Project>

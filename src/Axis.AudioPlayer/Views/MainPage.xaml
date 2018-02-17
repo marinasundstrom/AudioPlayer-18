@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Axis.AudioPlayer.Views" x:Class="Axis.AudioPlayer.Views.MainPage">
-    <Button x:Name="Button" Text="Click me!" VerticalOptions="Center" HorizontalOptions="Center" Clicked="Button_Clicked">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:Axis.AudioPlayer.Views" 
+             x:Class="Axis.AudioPlayer.Views.MainPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <Button x:Name="Button" Text="{Binding ButtonText}" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding ClickCommand}">
         <Button.TextColor>
             <OnPlatform x:TypeArguments="Color">
-                <On Platform="iOS" Value="White" />
+                <On Platform="iOS" Value="Black" />
                 <On Platform="macOS" Value="White" />
                 <On Platform="Android" Value="Black" />
             </OnPlatform>
