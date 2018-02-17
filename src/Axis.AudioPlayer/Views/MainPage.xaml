@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Axis.AudioPlayer.Views" x:Class="Axis.AudioPlayer.Views.MainPage">
-    <Label Text="Welcome to Xamarin Forms!" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Button x:Name="Button" Text="Click me!" VerticalOptions="Center" HorizontalOptions="Center" Clicked="Button_Clicked">
+        <Button.TextColor>
+            <OnPlatform x:TypeArguments="Color">
+                <On Platform="iOS" Value="White" />
+                <On Platform="macOS" Value="White" />
+                <On Platform="Android" Value="Black" />
+            </OnPlatform>
+        </Button.TextColor>
+    </Button>
 </ContentPage>

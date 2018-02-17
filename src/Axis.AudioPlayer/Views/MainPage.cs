@@ -8,5 +8,12 @@ namespace Axis.AudioPlayer.Views
         {
             InitializeComponent();
         }
+
+        int count = 0;
+
+        void Button_Clicked(object sender, System.EventArgs e)
+        {
+            Button.Text = $"{++count} times";
+        }
     }
 }
