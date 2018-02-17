@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using Axis.AudioPlayer.Views;
 
 namespace Axis.AudioPlayer
 {
@@ -8,7 +9,7 @@ namespace Axis.AudioPlayer
         {
             InitializeComponent();
 
-            MainPage = new AudioPlayerPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
