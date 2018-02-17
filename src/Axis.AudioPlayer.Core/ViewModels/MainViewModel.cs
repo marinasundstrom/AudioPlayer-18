@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using MvvmUtils;
 
 namespace Axis.AudioPlayer.ViewModels
@@ -28,15 +27,15 @@ namespace Axis.AudioPlayer.ViewModels
             switch (count)
             {
                 case 1:
-                    ButtonText = $"Once";
+                    ButtonText = "Once";
                     break;
 
                 case 2:
-                    ButtonText = $"Twice";
+                    ButtonText = "Twice";
                     break;
 
                 case 3:
-                    ButtonText = $"Thrice";
+                    ButtonText = "Thrice";
                     break;
 
                 default:
