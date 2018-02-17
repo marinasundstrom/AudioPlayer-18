@@ -1,8 +1,9 @@
 ﻿using Autofac;
 using Autofac.Extras.CommonServiceLocator;
+using Axis.AudioPlayer.ViewModels;
 using CommonServiceLocator;
 
-namespace Axis.AudioPlayer.ViewModels
+namespace Axis.AudioPlayer
 {
     public class ViewModelLocator
     {
