@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axis.AudioPlayer.iOS", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axis.AudioPlayer.Droid", "src\Droid\Axis.AudioPlayer.Droid.csproj", "{CAB44323-6969-401C-8179-D683806E51BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axis.AudioPlayer.macOS", "src\macOS\Axis.AudioPlayer.macOS.csproj", "{A54C52C3-B1D0-4B08-B43B-AE99F4301DAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -35,10 +37,19 @@ Global
 		{CAB44323-6969-401C-8179-D683806E51BE}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{CAB44323-6969-401C-8179-D683806E51BE}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{CAB44323-6969-401C-8179-D683806E51BE}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{A54C52C3-B1D0-4B08-B43B-AE99F4301DAA}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{A54C52C3-B1D0-4B08-B43B-AE99F4301DAA}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{A54C52C3-B1D0-4B08-B43B-AE99F4301DAA}.Release|iPhone.ActiveCfg = Release|iPhoneSimulator
+		{A54C52C3-B1D0-4B08-B43B-AE99F4301DAA}.Release|iPhone.Build.0 = Release|iPhoneSimulator
+		{A54C52C3-B1D0-4B08-B43B-AE99F4301DAA}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{A54C52C3-B1D0-4B08-B43B-AE99F4301DAA}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{A54C52C3-B1D0-4B08-B43B-AE99F4301DAA}.Debug|iPhone.ActiveCfg = Debug|iPhoneSimulator
+		{A54C52C3-B1D0-4B08-B43B-AE99F4301DAA}.Debug|iPhone.Build.0 = Debug|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D705AC8D-9D4A-4AD9-B4C2-EEE80F36CB7C} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
 		{1510BF33-EABE-4D7E-B075-9F18E5FD70A0} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
 		{CAB44323-6969-401C-8179-D683806E51BE} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
+		{A54C52C3-B1D0-4B08-B43B-AE99F4301DAA} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
 	EndGlobalSection
 EndGlobal
