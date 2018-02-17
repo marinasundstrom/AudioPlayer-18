@@ -8,6 +8,7 @@
   <ItemGroup>
     <Folder Include="ViewModels\" />
     <Folder Include="Services\" />
+    <Folder Include="Messages\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MvvmUtils\MvvmUtils.csproj" />

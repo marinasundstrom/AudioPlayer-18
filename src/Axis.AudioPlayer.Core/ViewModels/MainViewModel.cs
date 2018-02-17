@@ -10,11 +10,9 @@ namespace Axis.AudioPlayer.ViewModels
         private RelayCommand clickCommand;
         private int count;
 
-        public MainViewModel(IDataService dataService)
+        public MainViewModel()
         {
             ButtonText = "Click me!";
-
-            dataService.DoSomething().Wait();
         }
 
         public string ButtonText

@@ -9,7 +9,7 @@ namespace Axis.AudioPlayer.Core.Tests
         [Fact]
         public void ExecuteClickCommand()
         {
-            var viewModel = new MainViewModel(null);
+            var viewModel = new MainViewModel();
 
             Assert.Equal(viewModel.ButtonText, "Click me!");
 
