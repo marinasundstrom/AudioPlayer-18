@@ -191,6 +191,7 @@
     <Compile Include="ViewController.designer.cs">
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Localize.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MvvmUtils\MvvmUtils.csproj">

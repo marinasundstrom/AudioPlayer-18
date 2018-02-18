@@ -1,5 +1,4 @@
 ﻿using System.Windows.Input;
-using Axis.AudioPlayer.Services;
 using MvvmUtils;
 
 namespace Axis.AudioPlayer.ViewModels
@@ -10,10 +9,14 @@ namespace Axis.AudioPlayer.ViewModels
         private RelayCommand clickCommand;
         private int count;
 
-        public MainViewModel()
+        public MainViewModel(IResourceContainer resourceContainer)
         {
-            ButtonText = "Click me!";
+            ResourceContainer = resourceContainer;
+
+            ButtonText = ResourceContainer.GetString("ClickMe");
         }
+
+        public IResourceContainer ResourceContainer { get; }
 
         public string ButtonText
         {
@@ -28,19 +31,19 @@ namespace Axis.AudioPlayer.ViewModels
             switch (count)
             {
                 case 1:
-                    ButtonText = "Once";
+                    ButtonText = ResourceContainer.GetString("Once");
                     break;
 
                 case 2:
-                    ButtonText = "Twice";
+                    ButtonText = ResourceContainer.GetString("Twice");
                     break;
 
                 case 3:
-                    ButtonText = "Thrice";
+                    ButtonText = ResourceContainer.GetString("Thrice");
                     break;
 
                 default:
-                    ButtonText = $"{count} times";
+                    ButtonText = ResourceContainer.GetString("Times", count);
                     break;
             }
         }));

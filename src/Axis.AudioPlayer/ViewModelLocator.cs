@@ -1,5 +1,8 @@
-﻿using Autofac;
+﻿using System.Reflection;
+using System.Resources;
+using Autofac;
 using Autofac.Extras.CommonServiceLocator;
+using Axis.AudioPlayer.Resources;
 using Axis.AudioPlayer.Services;
 using Axis.AudioPlayer.ViewModels;
 using CommonServiceLocator;
@@ -23,10 +26,19 @@ namespace Axis.AudioPlayer
 
             containerBuilder.RegisterType<MainViewModel>()
                             .SingleInstance();
-            
-            containerBuilder.RegisterType<DataService>()
-                            .As<IDataService>()
-                            .InstancePerDependency();
+
+            if (DesignerLibrary.IsInDesignMode)
+            {
+                // TBA
+            }
+            else
+            {
+                containerBuilder.RegisterType<DataService>()
+                                .As<IDataService>()
+                                .InstancePerDependency();
+            }
+
+            containerBuilder.Register<IResourceContainer>(ctx => new ResourceContainer(new ResourceManager(ResourceContainer.ResourceId, typeof(AppResources).GetTypeInfo().Assembly), new Localize()));
 
             var container = containerBuilder.Build();
 

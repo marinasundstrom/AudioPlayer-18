@@ -27,8 +27,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\LoadingPage.xaml.cs">
       <DependentUpon>LoadingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Markup\TranslateExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Markup\" />
   </ItemGroup>
 </Project>

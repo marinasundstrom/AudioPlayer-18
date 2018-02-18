@@ -17,9 +17,6 @@ namespace Axis.AudioPlayer
 
         protected override async void OnStart()
         {
-            if (DesignerLibrary.IsInDesignMode) 
-                return;
-
             // Handle when your app starts
 
             await LoadContext();
