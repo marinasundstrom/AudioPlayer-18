@@ -18,6 +18,7 @@ namespace Axis.AudioPlayer
         protected override async void OnStart()
         {
             // Handle when your app starts
+            // Will not work on GTK
 
             await LoadContext();
 
@@ -27,7 +28,7 @@ namespace Axis.AudioPlayer
         protected override void OnSleep()
         {
             // Handle when your app sleeps
-            // Will not work on macOS
+            // Will not work on GTK
 
             SaveContext().Wait();
         }
@@ -35,7 +36,7 @@ namespace Axis.AudioPlayer
         protected override async void OnResume()
         {
             // Handle when your app resumes
-            // Will not work on macOS
+            // Will not work on GTK
 
             await LoadContext();
 
