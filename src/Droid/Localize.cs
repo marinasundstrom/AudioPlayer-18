@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Threading;
 
 namespace Axis.AudioPlayer
 {
@@ -14,7 +15,8 @@ namespace Axis.AudioPlayer
 
         public void SetLocale(CultureInfo ci)
         {
-            throw new NotImplementedException();
+            Thread.CurrentThread.CurrentCulture = ci;
+            Thread.CurrentThread.CurrentUICulture = ci;
         }
     }
 }
