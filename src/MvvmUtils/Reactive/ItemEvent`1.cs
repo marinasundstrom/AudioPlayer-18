@@ -1,7 +1,7 @@
 ﻿using System;
 namespace MvvmUtils.Reactive
 {
-    public class ItemEvent<T>
+    public abstract class ItemEvent<T>
     {
         public ItemEvent(int index)
         {
