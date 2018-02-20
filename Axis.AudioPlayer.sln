@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axis.AudioPlayer.Core.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axis.AudioPlayer.Data", "src\Axis.AudioPlayer.Data\Axis.AudioPlayer.Data.csproj", "{3323A81C-9BC3-45CC-A56F-1D79B3DFC546}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axis.AudioPlayer.GTK", "src\Axis.AudioPlayer.GTK\Axis.AudioPlayer.GTK.csproj", "{A451A5C9-ACB9-4A67-9238-31872F3B91BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axis.AudioPlayer.GTK", "src\GTK\Axis.AudioPlayer.GTK.csproj", "{A451A5C9-ACB9-4A67-9238-31872F3B91BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
