@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Axis.AudioPlayer.Services
 {
-    public interface INavigationService
+	public interface INavigationService
     {
         void Configure(string pageKey, Type pageType);
 
@@ -23,11 +24,5 @@ namespace Axis.AudioPlayer.Services
         Task PushModal(string pageKey);
         Task PushModal(string pageKey, object parameter);
         Task PopModal();
-    }
-
-    public enum HistoryBehavior
-    {
-        Default,
-        ClearHistory
     }
 }

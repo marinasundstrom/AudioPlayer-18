@@ -8,12 +8,12 @@
   <ItemGroup>
     <Folder Include="ViewModels\" />
     <Folder Include="Services\" />
-    <Folder Include="Messages\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MvvmUtils\MvvmUtils.csproj" />
     <ProjectReference Include="..\Axis.AudioPlayer.Data\Axis.AudioPlayer.Data.csproj" />
+    <ProjectReference Include="..\Axis.AudioPlayer.Services\Axis.AudioPlayer.Services.csproj" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\AppResources.resx">
@@ -28,5 +28,9 @@
     <Compile Update="Strings\AppResources.Designer.cs">
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Reactive" Version="3.1.1" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.1.1" />
   </ItemGroup>
 </Project>

@@ -212,12 +212,38 @@
     <Reference Include="SQLitePCLRaw.batteries_v2">
       <HintPath>..\..\packages\SQLitePCLRaw.bundle_green.1.1.9\lib\MonoAndroid\SQLitePCLRaw.batteries_v2.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Forms.BehaviorsPack">
+      <HintPath>..\..\packages\Xamarin.Forms.BehaviorsPack.1.3.1\lib\netstandard1.0\Xamarin.Forms.BehaviorsPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Settings.Abstractions">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.3.1.1\lib\MonoAndroid10\Plugin.Settings.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Settings">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.3.1.1\lib\MonoAndroid10\Plugin.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity.Abstractions">
+      <HintPath>..\..\packages\Xam.Plugin.Connectivity.3.1.1\lib\MonoAndroid10\Plugin.Connectivity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity">
+      <HintPath>..\..\packages\Xam.Plugin.Connectivity.3.1.1\lib\MonoAndroid10\Plugin.Connectivity.dll</HintPath>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>..\..\packages\WebSocketSharp.1.0.3-rc11\lib\websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Zeroconf">
+      <HintPath>..\..\packages\Zeroconf.2.9.0\lib\netstandard1.3\Zeroconf.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Localize.cs" />
+    <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Services\PopupService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -233,6 +259,41 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\advertising_24.png" />
+    <AndroidResource Include="Resources\drawable\advertising_50.png" />
+    <AndroidResource Include="Resources\drawable\audio_50.png" />
+    <AndroidResource Include="Resources\drawable\dashboard_24.png" />
+    <AndroidResource Include="Resources\drawable\dashboard_50.png" />
+    <AndroidResource Include="Resources\drawable\expand_arrow_40.png" />
+    <AndroidResource Include="Resources\drawable\fast_forward_50.png" />
+    <AndroidResource Include="Resources\drawable\hamburger.png" />
+    <AndroidResource Include="Resources\drawable\megaphone_24.png" />
+    <AndroidResource Include="Resources\drawable\megaphone_50.png" />
+    <AndroidResource Include="Resources\drawable\microphone_30.png" />
+    <AndroidResource Include="Resources\drawable\microphone_100.png" />
+    <AndroidResource Include="Resources\drawable\music_library_30.png" />
+    <AndroidResource Include="Resources\drawable\music_library_40.png" />
+    <AndroidResource Include="Resources\drawable\music_library_50.png" />
+    <AndroidResource Include="Resources\drawable\musical_notes_24.png" />
+    <AndroidResource Include="Resources\drawable\musical_notes_30.png" />
+    <AndroidResource Include="Resources\drawable\musical_notes_46.png" />
+    <AndroidResource Include="Resources\drawable\musical_notes_50.png" />
+    <AndroidResource Include="Resources\drawable\musical_notes_100.png" />
+    <AndroidResource Include="Resources\drawable\mute_50.png" />
+    <AndroidResource Include="Resources\drawable\no_audio_50.png" />
+    <AndroidResource Include="Resources\drawable\online_30.png" />
+    <AndroidResource Include="Resources\drawable\online_40.png" />
+    <AndroidResource Include="Resources\drawable\online_100.png" />
+    <AndroidResource Include="Resources\drawable\pause_50.png" />
+    <AndroidResource Include="Resources\drawable\play_24.png" />
+    <AndroidResource Include="Resources\drawable\play_50.png" />
+    <AndroidResource Include="Resources\drawable\playlist_30.png" />
+    <AndroidResource Include="Resources\drawable\playlist_40.png" />
+    <AndroidResource Include="Resources\drawable\rewind_50.png" />
+    <AndroidResource Include="Resources\drawable\settings_24.png" />
+    <AndroidResource Include="Resources\drawable\settings_50.png" />
+    <AndroidResource Include="Resources\drawable\speaker_50.png" />
+    <AndroidResource Include="Resources\drawable\tune_30.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MvvmUtils\MvvmUtils.csproj">
@@ -247,6 +308,17 @@
       <Project>{3323A81C-9BC3-45CC-A56F-1D79B3DFC546}</Project>
       <Name>Axis.AudioPlayer.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AudioPlayerLib\AudioPlayerLib.csproj">
+      <Project>{00F29A51-A463-4B06-B0AE-5115AC3BAE47}</Project>
+      <Name>AudioPlayerLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Axis.AudioPlayer.Services\Axis.AudioPlayer.Services.csproj">
+      <Project>{F31D0934-FA60-43F4-9912-D9996F572C3A}</Project>
+      <Name>Axis.AudioPlayer.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="..\Axis.AudioPlayer\Axis.AudioPlayer.projitems" Label="Shared" Condition="Exists('..\Axis.AudioPlayer\Axis.AudioPlayer.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

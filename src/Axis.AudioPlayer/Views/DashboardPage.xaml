@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Axis.AudioPlayer.Views.DashboardPage" 
+Title="{Binding DisplayName}" BindingContext="{Binding Dashboard, Source={StaticResource Locator}}" 
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" ios:Page.LargeTitleDisplay="Automatic">
+    <ContentPage.Content>
+        <StackLayout Margin="16">
+            <Button Command="{Binding ShowPlayingNowCommand}" Text="Show playing" />
+            <Button Command="{Binding OpenAudioPlayerCommand}" Text="Visit Audio Player" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

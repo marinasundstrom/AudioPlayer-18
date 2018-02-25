@@ -3,6 +3,7 @@ using Axis.AudioPlayer.Views;
 using System.Threading.Tasks;
 using MvvmUtils;
 using CommonServiceLocator;
+using Axis.AudioPlayer.Services;
 
 namespace Axis.AudioPlayer
 {
@@ -43,8 +44,8 @@ namespace Axis.AudioPlayer
             MainPage = new MainPage();
         }
 
-        private Task LoadContext() => ServiceLocator.Current.GetInstance<IAppContext>().LoadContext();
+        private Task LoadContext() => ServiceLocator.Current.GetInstance<IAppContext>().Initialize();
 
-        private Task SaveContext() => ServiceLocator.Current.GetInstance<IAppContext>().SaveContext();
+        private Task SaveContext() => ServiceLocator.Current.GetInstance<IAppContext>().Save();
     }
 }

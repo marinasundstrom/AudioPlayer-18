@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Axis.AudioPlayer.Views.AddDevicePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Axis.AudioPlayer.Controls"
+    xmlns:local="clr-namespace:Axis.AudioPlayer"
+    Title="{Binding SelectedDevice.DisplayName}"
+    BindingContext="{Binding DeviceDiscovery, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS">16</On>
+                </OnPlatform>
+            </StackLayout.Margin>
+            <StackLayout BindingContext="{Binding SelectedDevice}">
+                <Label FontSize="Large" Text="Device Information" />
+                <StackLayout Margin="0,10,0,0">
+                    <Label Font="Bold" Text="Display Name" />
+                    <Label Text="{Binding DisplayName}" />
+                    <Label Font="Bold" Text="Product" />
+                    <Label Text="{Binding Product}" />
+                    <Label Font="Bold" Text="IP Address" />
+                    <Label Text="{Binding IPAddress}" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Margin="0,10,0,0">
+                <Label FontSize="Large" Text="Alias" />
+                <StackLayout Margin="0,10,0,0">
+                    <Entry Placeholder="{Binding SelectedDevice.DisplayName}" Text="{Binding Path=WizardDetails.Alias}" />
+                </StackLayout>
+            </StackLayout>
+            <controls:AddDeviceUserControl BindingContext="{Binding WizardDetails}" />
+            <Button Command="{Binding AddDeviceCommand}" Text="Add" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

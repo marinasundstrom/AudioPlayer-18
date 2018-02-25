@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Axis.AudioPlayer.Views.DevicesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Axis.AudioPlayer.Behaviors"
+    xmlns:local="clr-namespace:Axis.AudioPlayer"
+    Title="Personal Organiser"
+    Padding="0,40,0,0"
+    BindingContext="{Binding Devices, Source={StaticResource Locator}}"
+    Icon="hamburger.png">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="DeviceItemTemplate">
+                <TextCell Detail="{Binding IPAddress}" Text="{Binding DisplayName}" />
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+            <Label
+                Margin="15,0,0,0"
+                FontSize="Large"
+                Text="Zones"
+                VerticalOptions="Center" />
+            <Button
+                Command="{Binding AddDeviceCommand}"
+                FontSize="20"
+                Text="+" />
+        </StackLayout>
+        <ListView
+            x:Name="listView"
+            ItemTemplate="{StaticResource DeviceItemTemplate}"
+            ItemsSource="{Binding Devices}"
+            SelectedItem="{Binding SelectedDevice}"
+            SeparatorVisibility="None">
+            <ListView.Behaviors>
+                <behaviors:EventToCommandBehavior
+                    Command="{Binding SelectDeviceCommand}"
+                    EventArgsPropertyPath="Item"
+                    EventName="ItemTapped" />
+            </ListView.Behaviors>
+        </ListView>
+    </StackLayout>
+</ContentPage>
