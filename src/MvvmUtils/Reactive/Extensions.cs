@@ -131,8 +131,10 @@ namespace MvvmUtils.Reactive
                 else
                 {
                     var index = target.IndexOf(original);
-                    target[index] = value;
-
+                    if (target.Count >= index)
+                    {
+                        target[index] = value;
+                    }
                 }
             });
 

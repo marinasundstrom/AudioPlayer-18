@@ -117,7 +117,7 @@ namespace MvvmUtils.Reactive
             collectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, new[] { item }, index));
         }
 
-        public bool Remove(T item)
+        public virtual bool Remove(T item)
         {
             var index = source.IndexOf(item);
             var result = source.Remove(item);
@@ -126,11 +126,12 @@ namespace MvvmUtils.Reactive
                 whenItemRemoved.OnNext(new ItemRemoved<T>(index, item));
                 OnPropertyChanged("Count");
                 OnPropertyChanged("Item[]");
+                collectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, new[] { item }, index));
             }
             return result;
         }
 
-        public void RemoveAt(int index)
+        public virtual void RemoveAt(int index)
         {
             if (index >= 0)
             {

@@ -7,12 +7,12 @@ using System.Collections.Generic;
 
 namespace MvvmUtils.Tests
 {
-    public class ReactiveOrderedCollectionTest
+    public class ReactiveSortedCollectionTest
 	{
 		[Fact]
         public void Add_Successful()
 		{
-			var collection = new ReactiveOrderedCollection<string>(StringComparer.CurrentCulture);
+            var collection = new ReactiveSortedCollection<string>(StringComparer.CurrentCulture);
 			collection.WhenItemInserted.Subscribe(ev => Console.WriteLine($"{ev.Index} {ev.Item}"));
 			collection.Add("sfoo");
 

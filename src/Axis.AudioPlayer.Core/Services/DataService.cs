@@ -41,16 +41,6 @@ namespace Axis.AudioPlayer.Services
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
                 throw;
             }
-
-            db.Devices.Add(new Data.Device()
-            {
-                DisplayName = "Test",
-                IPAddress = "192.168.1.77",
-                Product = "",
-                Username = "root",
-                Password = "pass"
-            });
-            db.SaveChanges();
         }
 
 		public Task<Data.Device> GetDeviceAsync(Guid id) => db.Devices.Include(x => x.State).FirstOrDefaultAsync(x => x.Id == id);

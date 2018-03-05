@@ -43,10 +43,10 @@ namespace Axis.AudioPlayer.ViewModels
             DeviceDiscoverer = deviceDiscoverer;
             Connectivity = connectivity;
 
-			var deviceComparer = Comparer<Device>.Create(deviceComparison);
+            var deviceComparer = Comparer<Device>.Create(deviceComparison);
 
-			AllDevices = new ReactiveOrderedCollection<Device>(deviceComparer);
-			Devices = new ReactiveOrderedCollection<Device>(deviceComparer);
+            AllDevices = new ReactiveSortedCollection<Device>(deviceComparer);
+            Devices = new ReactiveSortedCollection<Device>(deviceComparer);
         }
 
         public string SearchText
@@ -55,11 +55,11 @@ namespace Axis.AudioPlayer.ViewModels
             set => SetProperty(ref searchText, value);
         }
 
-		public Comparison<Device> deviceComparison = new Comparison<Device>((d1, d2) => d1.DisplayName.CompareTo(d2.DisplayName));
+        public Comparison<Device> deviceComparison = new Comparison<Device>((d1, d2) => d1.DisplayName.CompareTo(d2.DisplayName));
 
-        public ReactiveOrderedCollection<Device> AllDevices { get; }
+        public ReactiveSortedCollection<Device> AllDevices { get; }
 
-        public ReactiveOrderedCollection<Device> Devices { get; }
+        public ReactiveSortedCollection<Device> Devices { get; }
 
         public Device SelectedDevice
         {
@@ -201,6 +201,10 @@ namespace Axis.AudioPlayer.ViewModels
 
         private bool IsDeviceInFilter(Device d)
         {
+            if(string.IsNullOrEmpty(SearchText)) 
+            {
+                return true;
+            }
             return d.DisplayName.ToLower().Contains(SearchText.ToLower()) || d.IPAddress.ToLower().Contains(SearchText.ToLower());
         }
 
@@ -211,46 +215,37 @@ namespace Axis.AudioPlayer.ViewModels
             var whenItemAddedToAllDevices = AllDevices.WhenItemInserted;
 
             subscription = whenDeviceDiscovered
-                .DistinctUntilChanged()
+                .Throttle(TimeSpan.FromMilliseconds(200))
                 .Where(IsDeviceInFilter)
-                .PushOrUpdate(this, vm => vm.AllDevices, d => d.DisplayName);
+                .Subscribe((device) =>
+                {
+                    if (!AllDevices.Any(d => d.IPAddress == device.IPAddress))
+                    {
+                        AllDevices.Add(device);
+                    }
+                    if (IsDeviceInFilter(device))
+                    {
+                        if (!Devices.Any(d => d.IPAddress == device.IPAddress))
+                        {
+                            Devices.Add(device);
+                        }
+                    }
+                });
+
+
 
             subscription2 = whenSearchTextChanged
                 .DistinctUntilChanged()
                 .Throttle(TimeSpan.FromMilliseconds(800))
-                .Subscribe(v => InsertItem(v));
+                .Subscribe((searchText) =>
+           {
+               
+           });
 
-            subscription3 = whenItemAddedToAllDevices
-                .DistinctUntilChanged()
-                .Select(x => x.Item)
-                .Throttle(TimeSpan.FromMilliseconds(800))
-                .Where(IsDeviceInFilter)
-                .Subscribe(i => InsertItem(SearchText));
 
             DeviceDiscoverer.Start();
 
             SearchText = string.Empty;
-        }
-
-        private void InsertItem(string text)
-        {
-            if (!string.IsNullOrWhiteSpace(text))
-            {
-                var devices = AllDevices.Where(IsDeviceInFilter);
-                Devices.Clear();
-                foreach (var d in devices)
-                {
-                    Devices.Add(d);
-                }
-            }
-            else
-            {
-                Devices.Clear();
-                foreach (var d in AllDevices)
-                {
-                    Devices.Add(d);
-                }
-            }
         }
 
         public void Cleanup()
@@ -258,6 +253,9 @@ namespace Axis.AudioPlayer.ViewModels
             DeviceDiscoverer.Stop();
             subscription.Dispose();
             subscription2.Dispose();
+
+            AllDevices.Clear();
+            Devices.Clear();
         }
 
         public IDeviceDiscoverer DeviceDiscoverer { get; }
