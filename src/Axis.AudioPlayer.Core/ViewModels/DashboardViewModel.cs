@@ -27,7 +27,7 @@ namespace Axis.AudioPlayer.ViewModels
 
         private void Context_DeviceSet(object sender, System.EventArgs e)
         {
-            DisplayName = Context.Device.DisplayName;
+            DisplayName = Context.Device?.DisplayName;
         }
 
         public string DisplayName

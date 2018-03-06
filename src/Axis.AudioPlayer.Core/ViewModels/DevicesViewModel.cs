@@ -13,8 +13,6 @@ namespace Axis.AudioPlayer.ViewModels
 	{
 		private RelayCommand addDeviceCommand;
 		private RelayCommand selectDeviceCommand;
-		private readonly RelayCommand addCustomDeviceCommand;
-
 		private Data.Device selectedDevice;
 
 		private IDisposable deviceAddedSubscription;

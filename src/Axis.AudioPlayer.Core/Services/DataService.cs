@@ -21,7 +21,7 @@ namespace Axis.AudioPlayer.Services
             db = new AudioPlayerContext(dbFullPath);
         }
 
-        public async Task<IEnumerable<Data.Device>> GetDevicesAsync() => (await db.Devices.Include(x => x.State).ToArrayAsync()).AsEnumerable();
+        public async Task<IEnumerable<Data.Device>> GetDevicesAsync() => await db.Devices.ToArrayAsync();
 
         public async Task<Data.Device> AddOrUpdateDeviceAsync(Data.Device device)
         {
@@ -43,7 +43,7 @@ namespace Axis.AudioPlayer.Services
             }
         }
 
-		public Task<Data.Device> GetDeviceAsync(Guid id) => db.Devices.Include(x => x.State).FirstOrDefaultAsync(x => x.Id == id);
+		public Task<Data.Device> GetDeviceAsync(Guid id) => db.Devices.FirstOrDefaultAsync(x => x.Id == id);
 
         public Task RemoveAsync(Data.Device device)
         {

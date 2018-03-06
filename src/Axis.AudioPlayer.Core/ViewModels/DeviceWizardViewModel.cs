@@ -9,6 +9,8 @@ using MvvmUtils.Reactive;
 using Axis.AudioPlayer.Services;
 using MvvmUtils;
 using Plugin.Connectivity.Abstractions;
+using Axis.AudioPlayer.Messages;
+using System.ComponentModel;
 
 namespace Axis.AudioPlayer.ViewModels
 {
@@ -83,6 +85,8 @@ namespace Axis.AudioPlayer.ViewModels
         => navigateToAddCustomDeviceCommand ?? (navigateToAddCustomDeviceCommand = new RelayCommand(async () =>
         {
             WizardCustom = new WizardCustom();
+            WizardCustom.PropertyChanged += P1;
+
             await Navigation.NavigateTo("AddDeviceCustom");
         }));
 
@@ -141,8 +145,15 @@ namespace Axis.AudioPlayer.ViewModels
             await Navigation.PopModal();
         }));
 
+        private void P1(object sender, PropertyChangedEventArgs e) => addCustomDeviceStep1Command.RaiseCanExecuteChanged();    
+
+        private void P2(object sender, PropertyChangedEventArgs e) => addCustomDeviceStep2Command.RaiseCanExecuteChanged();    
+
         public ICommand AddCustomDeviceStep1Command => addCustomDeviceStep1Command ?? (addCustomDeviceStep1Command = new RelayCommand(async () =>
         {
+            WizardSetAlias = new WizardSetAlias();
+            WizardSetAlias.PropertyChanged += P2;
+
             if (!Connectivity.IsConnected)
             {
                 await PopupService.DisplayAlertAsync("Not connected", "Your device is not connected.", new[] {
@@ -187,7 +198,9 @@ namespace Axis.AudioPlayer.ViewModels
                 Password = WizardCustom.Password
             };
 
-            await DataService.AddOrUpdateDeviceAsync(device);
+            device = await DataService.AddOrUpdateDeviceAsync(device);
+
+            MessageBus.Publish(new DeviceAdded(device.Id));
 
             if (Context.Device == null)
             {
@@ -250,6 +263,15 @@ namespace Axis.AudioPlayer.ViewModels
 
         public void Cleanup()
         {
+            if (WizardCustom != null)
+            {
+                WizardCustom.PropertyChanged -= P1;
+            }
+            if (WizardSetAlias != null)
+            {
+                WizardSetAlias.PropertyChanged -= P2;
+            }
+
             DeviceDiscoverer.Stop();
             subscription.Dispose();
             subscription2.Dispose();

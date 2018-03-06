@@ -38,6 +38,7 @@ namespace Axis.AudioPlayer.ViewModels
             var device = Context.Device;
             await Context.ForgetDevice();
 			MessageBus.Publish(new DeviceDeleted(device.Id));
+            await Context.SetDevice(null);
         }));
 
 		public ISettingsNavigator Navigation { get; }

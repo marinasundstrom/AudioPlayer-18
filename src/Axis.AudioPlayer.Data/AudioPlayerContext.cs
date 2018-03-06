@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace Axis.AudioPlayer.Data
 {
@@ -22,6 +23,7 @@ namespace Axis.AudioPlayer.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //File.Delete(DatabasePath);
             optionsBuilder.UseSqlite($"Filename={DatabasePath}");
         }
     }

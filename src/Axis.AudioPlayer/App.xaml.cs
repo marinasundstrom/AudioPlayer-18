@@ -14,6 +14,8 @@ namespace Axis.AudioPlayer
             InitializeComponent();
 
             MainPage = new LoadingPage();
+
+            Dispatcher.Current = new MyDispatcher();
         }
 
         protected override async void OnStart()

@@ -6,7 +6,7 @@
 				<On Platform="iOS">16</On>
 			</OnPlatform>
 		</StackLayout.Margin>
-		<StackLayout BindingContext="{Binding WizardCustomAlias}">
+		<StackLayout BindingContext="{Binding WizardSetAlias}">
 			<StackLayout Margin="0,10,0,0">
 				<Entry Placeholder="Alias, eg. &quot;Main hall&quot;" Text="{Binding Alias}">
 					<Entry.Behaviors>

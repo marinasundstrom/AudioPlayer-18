@@ -37,6 +37,12 @@ namespace Axis.AudioPlayer
 			set => SetProperty(ref password, value);
 		}
 
+        public override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            pristine = false;
+            base.OnPropertyChanged(propertyName);
+        }
+
 		protected override void ValidateProperty<T>(T value, [CallerMemberName] string propertyName = null)
 		{
 			base.ValidateProperty(value, propertyName);
@@ -48,7 +54,7 @@ namespace Axis.AudioPlayer
 		{
 			get
 			{
-				if (pristine) return false;
+				if(pristine) return false;
 				return !HasErrors;
 			}
 		}

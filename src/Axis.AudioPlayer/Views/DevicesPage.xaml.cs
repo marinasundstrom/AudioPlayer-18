@@ -24,7 +24,7 @@ namespace Axis.AudioPlayer.Views
             }
             catch (Exception)
             {
-                await DisplayAlert("Connection error", "Unable to load playlists.", "OK");
+
             }
         }
     }

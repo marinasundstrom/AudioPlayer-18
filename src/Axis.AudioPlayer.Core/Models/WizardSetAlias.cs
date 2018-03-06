@@ -11,12 +11,17 @@ namespace Axis.AudioPlayer
 
 		private bool pristine = true;
 
-		[Required(ErrorMessage = "Name cannot be empty!")]
 		public string Alias
 		{
 			get => alias;
 			set => SetAndValidateProperty(ref alias, value);
 		}
+
+        public override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            pristine = false;
+            base.OnPropertyChanged(propertyName);
+        }
 
 		protected override void ValidateProperty<T>(T value, [CallerMemberName] string propertyName = null)
 		{
