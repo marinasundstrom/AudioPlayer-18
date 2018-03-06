@@ -151,6 +151,11 @@ namespace Axis.AudioPlayer.ViewModels
 
         public ICommand AddCustomDeviceStep1Command => addCustomDeviceStep1Command ?? (addCustomDeviceStep1Command = new RelayCommand(async () =>
         {
+            if (WizardCustom != null)
+            {
+                WizardCustom.PropertyChanged -= P1;
+            }
+
             WizardSetAlias = new WizardSetAlias();
             WizardSetAlias.PropertyChanged += P2;
 
@@ -189,6 +194,11 @@ namespace Axis.AudioPlayer.ViewModels
 
         public ICommand AddCustomDeviceStep2Command => addCustomDeviceStep2Command ?? (addCustomDeviceStep2Command = new RelayCommand(async () =>
         {
+            if (WizardSetAlias != null)
+            {
+                WizardSetAlias.PropertyChanged -= P2;
+            }
+
             var device = new Data.Device()
             {
                 DisplayName = WizardSetAlias.Alias,
@@ -263,15 +273,6 @@ namespace Axis.AudioPlayer.ViewModels
 
         public void Cleanup()
         {
-            if (WizardCustom != null)
-            {
-                WizardCustom.PropertyChanged -= P1;
-            }
-            if (WizardSetAlias != null)
-            {
-                WizardSetAlias.PropertyChanged -= P2;
-            }
-
             DeviceDiscoverer.Stop();
             subscription.Dispose();
             subscription2.Dispose();

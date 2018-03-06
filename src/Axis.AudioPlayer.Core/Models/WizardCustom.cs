@@ -22,8 +22,8 @@ namespace Axis.AudioPlayer
 
 		}
 
-		[Required(ErrorMessage = "IP Address is required")]
-		[IPAddress("Invalid IP Address")]
+		[Required(ErrorMessage = "Required")]
+        [HostName("Invalid IP address or hostname")]
 		public string IPAddress
 		{
 			get => ipAddress;

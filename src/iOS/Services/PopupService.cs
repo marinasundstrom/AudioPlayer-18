@@ -32,8 +32,15 @@ namespace Axis.AudioPlayer.Services
 
                 alert.AddAction(UIAlertAction.Create(action.Text, style, a =>
                 {
-                    action?.Command?.Execute(action.CommandParameter);
-                    tcs.TrySetResult(action);
+                    try
+                    {
+                        action?.Command?.Execute(action.CommandParameter);
+                        tcs.TrySetResult(action);
+                    }
+                    catch (Exception e)
+                    {
+                        tcs.SetException(e);
+                    }
                 }));
             }
             //if (alert.PopoverPresentationController != null)

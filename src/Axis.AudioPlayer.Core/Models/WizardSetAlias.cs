@@ -11,6 +11,7 @@ namespace Axis.AudioPlayer
 
 		private bool pristine = true;
 
+        [Required]
 		public string Alias
 		{
 			get => alias;

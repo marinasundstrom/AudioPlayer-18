@@ -13,7 +13,8 @@ namespace MvvmUtils.DataAnnotations
         {
             try
             {
-                return Uri.CheckHostName(value as string) != UriHostNameType.Unknown;
+                var type = Uri.CheckHostName(value as string);
+                return type == UriHostNameType.Dns || type == UriHostNameType.IPv4 || type == UriHostNameType.IPv6;
             }
             catch (Exception)
             {

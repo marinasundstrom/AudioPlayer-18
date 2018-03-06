@@ -236,6 +236,9 @@
     <Reference Include="Zeroconf">
       <HintPath>..\..\packages\Zeroconf.2.9.0\lib\netstandard1.3\Zeroconf.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.CurrentActivity">
+      <HintPath>..\..\packages\Plugin.CurrentActivity.1.0.1\lib\MonoAndroid10\Plugin.CurrentActivity.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -244,6 +247,7 @@
     <Compile Include="Localize.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Services\PopupService.cs" />
+    <Compile Include="MainApplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

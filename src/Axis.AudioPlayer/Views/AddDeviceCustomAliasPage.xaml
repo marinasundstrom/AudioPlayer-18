@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage x:Class="Axis.AudioPlayer.Views.AddDeviceCustomAliasPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Axis.AudioPlayer" xmlns:validation="clr-namespace:Axis.AudioPlayer.Validation" Title="Set alias" BindingContext="{Binding DeviceDiscovery, Source={StaticResource Locator}}">
+<ContentPage x:Class="Axis.AudioPlayer.Views.AddDeviceCustomAliasPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Axis.AudioPlayer" xmlns:validation="clr-namespace:Axis.AudioPlayer.Validation" Title="Set an alias" BindingContext="{Binding DeviceDiscovery, Source={StaticResource Locator}}">
 	<StackLayout>
 		<StackLayout.Margin>
 			<OnPlatform x:TypeArguments="Thickness">
