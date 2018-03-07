@@ -25,9 +25,18 @@ namespace Axis.AudioPlayer.Services
 
         public async Task<Data.Device> AddOrUpdateDeviceAsync(Data.Device device)
         {
-            var f = db.Update(device);
+            Data.Device entity;
+
+            if (device.Id == default)
+            {
+                entity = (await db.Devices.AddAsync(device)).Entity;
+            }
+            else
+            {
+                entity = db.Devices.Update(device).Entity;
+            }
             await db.SaveChangesAsync();
-            return f.Entity;
+            return entity;
         }
 
         public async Task InitializeAsync()

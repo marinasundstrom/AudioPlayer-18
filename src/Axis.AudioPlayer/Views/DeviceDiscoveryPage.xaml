@@ -14,7 +14,7 @@
         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
             <SearchBar Placeholder="Search..." Text="{Binding SearchText}">
             </SearchBar>
-            <ListView ItemTemplate="{StaticResource DeviceItemTemplate}" ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}">
+            <ListView ItemTemplate="{StaticResource DeviceItemTemplate}" ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" CachingStrategy="RecycleElementAndDataTemplate">
                 <ListView.Behaviors>
                     <behaviors:EventToCommandBehavior Command="{Binding SelectDeviceCommand}" EventArgsPropertyPath="Item" EventName="ItemTapped" />
                 </ListView.Behaviors>

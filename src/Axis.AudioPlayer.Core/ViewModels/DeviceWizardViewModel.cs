@@ -11,6 +11,7 @@ using MvvmUtils;
 using Plugin.Connectivity.Abstractions;
 using Axis.AudioPlayer.Messages;
 using System.ComponentModel;
+using CommonServiceLocator;
 
 namespace Axis.AudioPlayer.ViewModels
 {
@@ -20,8 +21,6 @@ namespace Axis.AudioPlayer.ViewModels
         private RelayCommand navigateToAddCustomDeviceCommand;
         private RelayCommand cancelCommand;
         private RelayCommand addDeviceCommand;
-        private RelayCommand addCustomDeviceStep1Command;
-        private RelayCommand addCustomDeviceStep2Command;
 
         private IDisposable subscription;
         private IDisposable subscription2;
@@ -84,16 +83,15 @@ namespace Axis.AudioPlayer.ViewModels
         public ICommand NavigateToAddCustomDeviceCommand
         => navigateToAddCustomDeviceCommand ?? (navigateToAddCustomDeviceCommand = new RelayCommand(async () =>
         {
-            WizardCustom = new WizardCustom();
-            WizardCustom.PropertyChanged += P1;
-
-            await Navigation.NavigateTo("AddDeviceCustom");
+            ServiceLocator.Current.GetInstance<AddCustomDeviceViewModel>().Initialize();
+            await Navigation.NavigateTo(Pages.AddDeviceCustom);
         }));
 
         public ICommand AddDeviceCommand => addDeviceCommand ?? (addDeviceCommand = new RelayCommand(async () =>
         {
             var ipAddress = SelectedDevice.IPAddress;
 
+            /*
             if (!Connectivity.IsConnected)
             {
                 await PopupService.DisplayAlertAsync("Not connected", "Your device is not connected.", new[] {
@@ -103,6 +101,7 @@ namespace Axis.AudioPlayer.ViewModels
                 });
                 return;
             }
+            */
 
             if (!await Connectivity.IsReachable($"http://{ipAddress}"))
             {
@@ -135,7 +134,9 @@ namespace Axis.AudioPlayer.ViewModels
                 Password = WizardDetails.Password
             };
 
-            await DataService.AddOrUpdateDeviceAsync(device);
+            var device2 = await DataService.AddOrUpdateDeviceAsync(device);
+
+            MessageBus.Publish(new DeviceAdded(device2.Id));
 
             if (Context.Device == null)
             {
@@ -144,81 +145,6 @@ namespace Axis.AudioPlayer.ViewModels
 
             await Navigation.PopModal();
         }));
-
-        private void P1(object sender, PropertyChangedEventArgs e) => addCustomDeviceStep1Command.RaiseCanExecuteChanged();    
-
-        private void P2(object sender, PropertyChangedEventArgs e) => addCustomDeviceStep2Command.RaiseCanExecuteChanged();    
-
-        public ICommand AddCustomDeviceStep1Command => addCustomDeviceStep1Command ?? (addCustomDeviceStep1Command = new RelayCommand(async () =>
-        {
-            if (WizardCustom != null)
-            {
-                WizardCustom.PropertyChanged -= P1;
-            }
-
-            WizardSetAlias = new WizardSetAlias();
-            WizardSetAlias.PropertyChanged += P2;
-
-            if (!Connectivity.IsConnected)
-            {
-                await PopupService.DisplayAlertAsync("Not connected", "Your device is not connected.", new[] {
-                    new PopupAction {
-                        Text = "OK"
-                    }
-                });
-                return;
-            }
-
-            if (!await Connectivity.IsReachable($"http://{WizardCustom.IPAddress}"))
-            {
-                await PopupService.DisplayAlertAsync("Host is not reachable", "Host is not recheable.", new[] {
-                    new PopupAction {
-                        Text = "OK"
-                    }
-                });
-                return;
-            }
-
-            if (!await ConnectionUtils.TestConnectionAsync(new System.Uri($"http://{WizardCustom.IPAddress}"), WizardCustom.Username, WizardCustom.Password))
-            {
-                await PopupService.DisplayAlertAsync("Invalid credentials", "The credentials are invalid.", new[] {
-                    new PopupAction {
-                        Text = "OK"
-                    }
-                });
-                return;
-            }
-
-            await Navigation.NavigateTo(Pages.AddDeviceCustomAlias);
-        }, () => WizardCustom.IsSubmitEnabled));
-
-        public ICommand AddCustomDeviceStep2Command => addCustomDeviceStep2Command ?? (addCustomDeviceStep2Command = new RelayCommand(async () =>
-        {
-            if (WizardSetAlias != null)
-            {
-                WizardSetAlias.PropertyChanged -= P2;
-            }
-
-            var device = new Data.Device()
-            {
-                DisplayName = WizardSetAlias.Alias,
-                // Product = string.Empty;
-                IPAddress = WizardCustom.IPAddress,
-                Username = WizardCustom.Username,
-                Password = WizardCustom.Password
-            };
-
-            device = await DataService.AddOrUpdateDeviceAsync(device);
-
-            MessageBus.Publish(new DeviceAdded(device.Id));
-
-            if (Context.Device == null)
-            {
-                await Context.SetDevice(device);
-            }
-
-            await Navigation.PopModal();
-        }, () => WizardSetAlias.IsSubmitEnabled));
 
         public ICommand CancelCommand => cancelCommand ?? (cancelCommand = RelayCommand.Create(async () => await Navigation.PopModal()));
 

@@ -5,6 +5,12 @@
     <RootNamespace>Axis.AudioPlayer</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
     <Folder Include="Services\" />
@@ -32,5 +38,6 @@
   <ItemGroup>
     <PackageReference Include="System.Reactive" Version="3.1.1" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.1.1" />
+    <PackageReference Include="CommonServiceLocator" Version="2.0.3" />
   </ItemGroup>
 </Project>

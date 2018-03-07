@@ -6,7 +6,7 @@
     xmlns:controls="clr-namespace:Axis.AudioPlayer.Controls"
     xmlns:local="clr-namespace:Axis.AudioPlayer"
     Title="{Binding SelectedDevice.DisplayName}"
-    BindingContext="{Binding DeviceDiscovery, Source={StaticResource Locator}}">
+    BindingContext="{Binding AddCustomDevice, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout.Margin>
