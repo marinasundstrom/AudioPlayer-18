@@ -1,25 +1,23 @@
 ﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Axis.AudioPlayer.Messages;
 using Axis.AudioPlayer.Services;
 using MvvmUtils;
+using MvvmUtils.DataAnnotations;
 using Plugin.Connectivity.Abstractions;
 
 namespace Axis.AudioPlayer.ViewModels
 {
-    public class AddCustomDeviceViewModel : AxisViewModelBase
+    public class AddDeviceViewModel : AxisViewModelBase
     {
         private RelayCommand cancelCommand;
         private RelayCommand finishStep1Command;
         private RelayCommand backCommand;
-        private RelayCommand finishStep2Command;
 
-        private WizardCustom step1;
-        private WizardSetAlias step2;
+        private WizardDetails step1;
+        private Device device;
 
-        public AddCustomDeviceViewModel(IAppContext context,
+        public AddDeviceViewModel(IAppContext context,
                                      IMessageBus messageBus,
                                      IDeviceNavigator navigationService,
                                      IDataService dataService,
@@ -33,25 +31,24 @@ namespace Axis.AudioPlayer.ViewModels
             Connectivity = connectivity;
         }
 
-        public WizardCustom Step1
+        public Device Device
+        {
+            get => device;
+            set => SetAndValidateProperty(ref device, value);
+        }
+
+        public WizardDetails Step1
         {
             get => step1;
             set => SetAndValidateProperty(ref step1, value);
         }
 
-        public WizardSetAlias Step2
+        public void Initialize(Device device)
         {
-            get => step2;
-            set => SetAndValidateProperty(ref step2, value);
-        }
+            Device = device;
 
-        public void Initialize()
-        {
-            Step1 = new WizardCustom();
-            Step2 = new WizardSetAlias();
-
+            Step1 = new WizardDetails();
             Step1.PropertyChanged += P1;
-            Step2.PropertyChanged += P2;
         }
 
         public ICommand CancelCommand => cancelCommand ?? (cancelCommand = RelayCommand.Create(async () => await Navigation.PopModal()));
@@ -68,7 +65,7 @@ namespace Axis.AudioPlayer.ViewModels
                     }
                 });
             }
-            else if (!await Connectivity.IsReachable($"http://{Step1.IPAddress}"))
+            else if (!await Connectivity.IsReachable($"http://{Device.IPAddress}"))
             {
                 await PopupService.DisplayAlertAsync("Host is not reachable", "Host is not recheable.", new[] {
                         new PopupAction {
@@ -76,7 +73,7 @@ namespace Axis.AudioPlayer.ViewModels
                         }
                     });
             }
-            else if (!await ConnectionUtils.TestConnectionAsync(new System.Uri($"http://{Step1.IPAddress}"), Step1.Username, Step1.Password))
+            else if (!await ConnectionUtils.TestConnectionAsync(new System.Uri($"http://{Device.IPAddress}"), Step1.Username, Step1.Password))
             {
                 await PopupService.DisplayAlertAsync("Invalid credentials", "The credentials are invalid.", new[] {
                             new PopupAction {
@@ -86,45 +83,36 @@ namespace Axis.AudioPlayer.ViewModels
             }
             else
             {
-                await Navigation.NavigateTo(Pages.AddDeviceCustomAlias);
+                var device = new Data.Device()
+                {
+                    DisplayName = !string.IsNullOrWhiteSpace(Step1.Alias) ? Step1.Alias : Device.DisplayName,
+                    IPAddress = Device.IPAddress,
+                    Username = Step1.Username,
+                    Password = Step1.Password
+                };
+
+                device = await DataService.AddOrUpdateDeviceAsync(device);
+
+                MessageBus.Publish(new DeviceAdded(device.Id));
+
+                if (Context.Device == null)
+                {
+                    await Context.SetDevice(device);
+                }
+
+                CleanUp();
+
+                await Navigation.PopModal();
             }
         }));
 
         public ICommand BackCommand => backCommand ?? (backCommand = RelayCommand.Create(async () => await Navigation.GoBack()));
 
-        public ICommand FinishStep2Command => finishStep2Command ?? (finishStep2Command = RelayCommand.Create(async () =>
-        {
-            if (!Step2.Validate()) return;
-
-            var device = new Data.Device()
-            {
-                DisplayName = Step2.Alias,
-                IPAddress = Step1.IPAddress,
-                Username = Step1.Username,
-                Password = Step1.Password
-            };
-
-            device = await DataService.AddOrUpdateDeviceAsync(device);
-
-            MessageBus.Publish(new DeviceAdded(device.Id));
-
-            if (Context.Device == null)
-            {
-                await Context.SetDevice(device);
-            }
-
-            CleanUp();
-
-            await Navigation.PopModal();
-        }));
-
         public override void CleanUp()
         {
             Step1.PropertyChanged -= P1;
-            Step2.PropertyChanged -= P2;
 
             Step1 = null;
-            Step2 = null;
         }
 
         public IPopupService PopupService { get; }
@@ -133,6 +121,5 @@ namespace Axis.AudioPlayer.ViewModels
         public IConnectivity Connectivity { get; }
 
         private void P1(object sender, PropertyChangedEventArgs e) => finishStep1Command.RaiseCanExecuteChanged();
-        private void P2(object sender, PropertyChangedEventArgs e) => finishStep2Command.RaiseCanExecuteChanged();
     }
 }

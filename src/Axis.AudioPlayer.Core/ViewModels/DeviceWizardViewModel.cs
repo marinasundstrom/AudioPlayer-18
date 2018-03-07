@@ -68,82 +68,23 @@ namespace Axis.AudioPlayer.ViewModels
             set => SetProperty(ref selectedDevice, value);
         }
 
-        public WizardCustom WizardCustom { get; private set; }
-
-        public WizardSetAlias WizardSetAlias { get; private set; }
-
-        public WizardDetails WizardDetails { get; private set; }
-
         public ICommand SelectDeviceCommand => selectDeviceCommand ?? (selectDeviceCommand = RelayCommand.Create(async () =>
         {
-            WizardDetails = new WizardDetails();
+            ServiceLocator.Current
+                          .GetInstance<AddDeviceViewModel>()
+                          .Initialize(SelectedDevice);
+            
             await Navigation.NavigateTo(Pages.AddDevice);
         }));
 
         public ICommand NavigateToAddCustomDeviceCommand
         => navigateToAddCustomDeviceCommand ?? (navigateToAddCustomDeviceCommand = new RelayCommand(async () =>
         {
-            ServiceLocator.Current.GetInstance<AddCustomDeviceViewModel>().Initialize();
+            ServiceLocator.Current
+                          .GetInstance<AddCustomDeviceViewModel>()
+                          .Initialize();
+            
             await Navigation.NavigateTo(Pages.AddDeviceCustom);
-        }));
-
-        public ICommand AddDeviceCommand => addDeviceCommand ?? (addDeviceCommand = new RelayCommand(async () =>
-        {
-            var ipAddress = SelectedDevice.IPAddress;
-
-            /*
-            if (!Connectivity.IsConnected)
-            {
-                await PopupService.DisplayAlertAsync("Not connected", "Your device is not connected.", new[] {
-                    new PopupAction {
-                        Text = "OK"
-                    }
-                });
-                return;
-            }
-            */
-
-            if (!await Connectivity.IsReachable($"http://{ipAddress}"))
-            {
-                await PopupService.DisplayAlertAsync("Host is not reachable", "Host is not reachable.", new[] {
-                    new PopupAction {
-                        Text = "OK"
-                    }
-                });
-                return;
-            }
-
-            if (!await ConnectionUtils.TestConnectionAsync(new System.Uri($"http://{SelectedDevice.IPAddress}"), WizardDetails.Username, WizardDetails.Password))
-            {
-                await PopupService.DisplayAlertAsync("Invalid credentials", "The credentials are invalid.", new[] {
-                    new PopupAction {
-                        Text = "OK"
-                    }
-                });
-                return;
-            }
-
-            var device = new Data.Device()
-            {
-                DisplayName = string.IsNullOrEmpty(WizardDetails.Alias) ?
-                                    SelectedDevice.DisplayName
-                                    : WizardDetails.Alias,
-                Product = SelectedDevice.Product,
-                IPAddress = SelectedDevice.IPAddress,
-                Username = WizardDetails.Username,
-                Password = WizardDetails.Password
-            };
-
-            var device2 = await DataService.AddOrUpdateDeviceAsync(device);
-
-            MessageBus.Publish(new DeviceAdded(device2.Id));
-
-            if (Context.Device == null)
-            {
-                await Context.SetDevice(device);
-            }
-
-            await Navigation.PopModal();
         }));
 
         public ICommand CancelCommand => cancelCommand ?? (cancelCommand = RelayCommand.Create(async () => await Navigation.PopModal()));

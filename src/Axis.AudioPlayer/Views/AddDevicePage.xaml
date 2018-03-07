@@ -6,7 +6,7 @@
     xmlns:controls="clr-namespace:Axis.AudioPlayer.Controls"
     xmlns:local="clr-namespace:Axis.AudioPlayer"
     Title="{Binding SelectedDevice.DisplayName}"
-    BindingContext="{Binding AddCustomDevice, Source={StaticResource Locator}}">
+    BindingContext="{Binding AddDevice, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout.Margin>
@@ -14,7 +14,7 @@
                     <On Platform="iOS">16</On>
                 </OnPlatform>
             </StackLayout.Margin>
-            <StackLayout BindingContext="{Binding SelectedDevice}">
+            <StackLayout BindingContext="{Binding Device}">
                 <Label FontSize="Large" Text="Device Information" />
                 <StackLayout Margin="0,10,0,0">
                     <Label Font="Bold" Text="Display Name" />
@@ -28,11 +28,11 @@
             <StackLayout Margin="0,10,0,0">
                 <Label FontSize="Large" Text="Alias" />
                 <StackLayout Margin="0,10,0,0">
-                    <Entry Placeholder="{Binding SelectedDevice.DisplayName}" Text="{Binding Path=WizardDetails.Alias}" />
+                    <Entry Placeholder="{Binding Device.DisplayName}" Text="{Binding Path=Step1.Alias}" />
                 </StackLayout>
             </StackLayout>
-            <controls:AddDeviceUserControl BindingContext="{Binding WizardDetails}" />
-            <Button Command="{Binding AddDeviceCommand}" Text="Add" />
+            <controls:AddDeviceUserControl BindingContext="{Binding Step1}" />
+            <Button Command="{Binding FinishStep1Command}" Text="Add" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

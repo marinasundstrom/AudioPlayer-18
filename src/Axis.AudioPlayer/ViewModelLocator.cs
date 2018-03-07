@@ -38,6 +38,7 @@ namespace Axis.AudioPlayer
             containerBuilder.RegisterType<StreamsViewModel>().SingleInstance();
             containerBuilder.RegisterType<DevicesViewModel>().SingleInstance();
             containerBuilder.RegisterType<DeviceWizardViewModel>().SingleInstance();
+            containerBuilder.RegisterType<AddDeviceViewModel>().SingleInstance();
             containerBuilder.RegisterType<AddCustomDeviceViewModel>().SingleInstance();
             containerBuilder.RegisterType<SettingsViewModel>().InstancePerDependency();
 
@@ -121,6 +122,8 @@ namespace Axis.AudioPlayer
         public DevicesViewModel Devices => ServiceLocator.Current.GetInstance<DevicesViewModel>();
 
         public DeviceWizardViewModel DeviceDiscovery => ServiceLocator.Current.GetInstance<DeviceWizardViewModel>();
+
+        public AddDeviceViewModel AddDevice => ServiceLocator.Current.GetInstance<AddDeviceViewModel>();
 
         public AddCustomDeviceViewModel AddCustomDevice => ServiceLocator.Current.GetInstance<AddCustomDeviceViewModel>();
 
