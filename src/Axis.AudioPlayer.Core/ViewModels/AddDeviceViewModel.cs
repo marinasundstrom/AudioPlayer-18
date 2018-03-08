@@ -15,7 +15,7 @@ namespace Axis.AudioPlayer.ViewModels
         private RelayCommand backCommand;
 
         private WizardDetails step1;
-        private Device device;
+        private DiscoveryDevice device;
 
         public AddDeviceViewModel(IAppContext context,
                                      IMessageBus messageBus,
@@ -31,7 +31,7 @@ namespace Axis.AudioPlayer.ViewModels
             Connectivity = connectivity;
         }
 
-        public Device Device
+        public DiscoveryDevice Device
         {
             get => device;
             set => SetAndValidateProperty(ref device, value);
@@ -43,7 +43,7 @@ namespace Axis.AudioPlayer.ViewModels
             set => SetAndValidateProperty(ref step1, value);
         }
 
-        public void Initialize(Device device)
+        public void Initialize(DiscoveryDevice device)
         {
             Device = device;
 
@@ -83,7 +83,7 @@ namespace Axis.AudioPlayer.ViewModels
             }
             else
             {
-                var device = new Data.Device()
+                var device = new Device()
                 {
                     DisplayName = !string.IsNullOrWhiteSpace(Step1.Alias) ? Step1.Alias : Device.DisplayName,
                     IPAddress = Device.IPAddress,

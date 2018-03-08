@@ -1,6 +1,6 @@
 ﻿namespace Axis.AudioPlayer.Services
 {
-    public class Device
+    public class DiscoveryDevice
     {
         public string DisplayName { get; set; }
 

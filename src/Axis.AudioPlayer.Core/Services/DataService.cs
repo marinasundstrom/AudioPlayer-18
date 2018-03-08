@@ -3,61 +3,76 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Axis.AudioPlayer.Data;
-using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Axis.AudioPlayer.Services
 {
     public class DataService : IDataService
     {
-        private readonly AudioPlayerContext db;
-
-        private const string fileName = "Data.db";
+        private List<Device> devices = new List<Device>();
+        private string dbFullPath;
+        private const string fileName = "devices.json";
 
         public DataService()
         {
             var dbFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-            var dbFullPath = Path.Combine(dbFolder, fileName);
-            db = new AudioPlayerContext(dbFullPath);
+            dbFullPath = Path.Combine(dbFolder, fileName);
         }
 
-        public async Task<IEnumerable<Data.Device>> GetDevicesAsync() => await db.Devices.ToArrayAsync();
+        public Task<IEnumerable<Device>> GetDevicesAsync() => Task.Run(() => devices.AsEnumerable());
 
-        public async Task<Data.Device> AddOrUpdateDeviceAsync(Data.Device device)
+        public Task<Device> AddOrUpdateDeviceAsync(Device device)
         {
-            Data.Device entity;
-
-            if (device.Id == default)
+            return Task.Run(() =>
             {
-                entity = (await db.Devices.AddAsync(device)).Entity;
-            }
-            else
-            {
-                entity = db.Devices.Update(device).Entity;
-            }
-            await db.SaveChangesAsync();
-            return entity;
+                bool any = devices.Any(x => x.Id == device.Id);
+                int index = devices.TakeWhile(x => x.Id != device.Id).Count();
+                if (any && index > -1)
+                {
+                    devices[index] = device;
+                }
+                else
+                {
+                    device.Id = Guid.NewGuid();
+                    devices.Add(device);
+                }
+                Save();
+                return device;
+            });
         }
 
-        public async Task InitializeAsync()
+        private Task Save()
         {
-            try
+            return Task.Run(() =>
             {
-                await db.Database.MigrateAsync();
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
-                throw;
-            }
+                var text = JsonConvert.SerializeObject(devices);
+                File.WriteAllText(dbFullPath, text);
+            });
         }
 
-		public Task<Data.Device> GetDeviceAsync(Guid id) => db.Devices.FirstOrDefaultAsync(x => x.Id == id);
-
-        public Task RemoveAsync(Data.Device device)
+        public Task InitializeAsync()
         {
-            db.Devices.Remove(device);
-            return db.SaveChangesAsync();
+            return Task.Run(() =>
+            {
+                if (File.Exists(dbFullPath))
+                {
+                    var text = File.ReadAllText(dbFullPath);
+                    devices = JsonConvert.DeserializeObject<List<Device>>(text);
+                }
+                else
+                {
+                    devices = new List<Device>();
+                }
+            });
+        }
+
+        public Task<Device> GetDeviceAsync(Guid id) => Task.Run(() => devices.FirstOrDefault(x => x.Id == id));
+
+        public Task RemoveAsync(Device device)
+        {
+            var d = devices.First(x => x.Id == device.Id);
+            devices.Remove(d);
+            return Save();
         }
     }
 }

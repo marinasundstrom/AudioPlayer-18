@@ -5,11 +5,11 @@ namespace Axis.AudioPlayer.Services
 {
     public interface IAppContext
     {
-        Data.Device Device { get; }
+        Device Device { get; }
 
 		IPlayerService Player { get; }
 
-        Task SetDevice(Data.Device device);
+        Task SetDevice(Device device);
 
         event EventHandler DeviceChanged;
 

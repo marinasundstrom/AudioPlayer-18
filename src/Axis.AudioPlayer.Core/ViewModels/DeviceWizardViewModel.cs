@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
@@ -9,8 +8,6 @@ using MvvmUtils.Reactive;
 using Axis.AudioPlayer.Services;
 using MvvmUtils;
 using Plugin.Connectivity.Abstractions;
-using Axis.AudioPlayer.Messages;
-using System.ComponentModel;
 using CommonServiceLocator;
 
 namespace Axis.AudioPlayer.ViewModels
@@ -26,7 +23,7 @@ namespace Axis.AudioPlayer.ViewModels
         private IDisposable subscription2;
         private IDisposable subscription3;
 
-        private Device selectedDevice;
+        private DiscoveryDevice selectedDevice;
         private string searchText = String.Empty;
 
         public DeviceWizardViewModel(IAppContext context,
@@ -44,10 +41,10 @@ namespace Axis.AudioPlayer.ViewModels
             DeviceDiscoverer = deviceDiscoverer;
             Connectivity = connectivity;
 
-            var deviceComparer = Comparer<Device>.Create(deviceComparison);
+            var deviceComparer = Comparer<DiscoveryDevice>.Create(deviceComparison);
 
-            AllDevices = new ReactiveSortedCollection<Device>(deviceComparer);
-            Devices = new ReactiveSortedCollection<Device>(deviceComparer);
+            AllDevices = new ReactiveSortedCollection<DiscoveryDevice>(deviceComparer);
+            Devices = new ReactiveSortedCollection<DiscoveryDevice>(deviceComparer);
         }
 
         public string SearchText
@@ -56,13 +53,13 @@ namespace Axis.AudioPlayer.ViewModels
             set => SetProperty(ref searchText, value);
         }
 
-        public Comparison<Device> deviceComparison = new Comparison<Device>((d1, d2) => d1.DisplayName.CompareTo(d2.DisplayName));
+        public Comparison<DiscoveryDevice> deviceComparison = new Comparison<DiscoveryDevice>((d1, d2) => d1.DisplayName.CompareTo(d2.DisplayName));
 
-        public ReactiveSortedCollection<Device> AllDevices { get; }
+        public ReactiveSortedCollection<DiscoveryDevice> AllDevices { get; }
 
-        public ReactiveSortedCollection<Device> Devices { get; }
+        public ReactiveSortedCollection<DiscoveryDevice> Devices { get; }
 
-        public Device SelectedDevice
+        public DiscoveryDevice SelectedDevice
         {
             get => selectedDevice;
             set => SetProperty(ref selectedDevice, value);
@@ -89,7 +86,7 @@ namespace Axis.AudioPlayer.ViewModels
 
         public ICommand CancelCommand => cancelCommand ?? (cancelCommand = RelayCommand.Create(async () => await Navigation.PopModal()));
 
-        private bool IsDeviceInFilter(Device d)
+        private bool IsDeviceInFilter(DiscoveryDevice d)
         {
             if(string.IsNullOrEmpty(SearchText)) 
             {

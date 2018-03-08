@@ -15,6 +15,5 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AudioPlayerLib\AudioPlayerLib.csproj" />
-    <ProjectReference Include="..\Axis.AudioPlayer.Data\Axis.AudioPlayer.Data.csproj" />
   </ItemGroup>
 </Project>

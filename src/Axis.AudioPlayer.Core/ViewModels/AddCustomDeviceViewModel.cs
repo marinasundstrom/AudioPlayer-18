@@ -96,7 +96,7 @@ namespace Axis.AudioPlayer.ViewModels
         {
             if (!Step2.Validate()) return;
 
-            var device = new Data.Device()
+            var device = new Device()
             {
                 DisplayName = Step2.Alias,
                 IPAddress = Step1.IPAddress,

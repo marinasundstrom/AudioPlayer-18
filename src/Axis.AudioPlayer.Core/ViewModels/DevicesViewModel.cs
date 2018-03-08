@@ -13,7 +13,7 @@ namespace Axis.AudioPlayer.ViewModels
 	{
 		private RelayCommand addDeviceCommand;
 		private RelayCommand selectDeviceCommand;
-		private Data.Device selectedDevice;
+		private Device selectedDevice;
 
 		private IDisposable deviceAddedSubscription;
 		private IDisposable deviceUpdatedSubscription;
@@ -29,7 +29,7 @@ namespace Axis.AudioPlayer.ViewModels
 			DataService = dataService;
 			PopupService = popupService;
 
-			Devices = new ObservableCollection<Data.Device>();
+			Devices = new ObservableCollection<Device>();
 		}
 
 		public IPlayerService Player { get; }
@@ -37,9 +37,9 @@ namespace Axis.AudioPlayer.ViewModels
 		public IDataService DataService { get; }
 		public IPopupService PopupService { get; }
 
-		public ObservableCollection<Data.Device> Devices { get; }
+		public ObservableCollection<Device> Devices { get; }
 
-		public Data.Device SelectedDevice
+		public Device SelectedDevice
 		{
 			get => selectedDevice;
 			set => SetProperty(ref selectedDevice, value);

@@ -11,13 +11,9 @@ namespace Axis.AudioPlayer.Services
 
 		private ZeroconfResolver.ResolverListener listener;
 
-		public DeviceDiscoverer()
-		{
-		}
-
 		public event EventHandler<DeviceDiscoveryEventArgs> DeviceDiscovered;
 
-		public IObservable<Device> WhenDeviceDiscovered 
+        public IObservable<DiscoveryDevice> WhenDeviceDiscovered 
 			=> Observable
 			.FromEventPattern<EventHandler<DeviceDiscoveryEventArgs>, DeviceDiscoveryEventArgs>(add => DeviceDiscovered += add, remove => DeviceDiscovered -= remove)
 			.Select(x => x.EventArgs.Device);
@@ -29,7 +25,7 @@ namespace Axis.AudioPlayer.Services
 
         public void Start()
         {
-            listener = Zeroconf.ZeroconfResolver.CreateListener(new[] { PROTOCOL });
+            listener = ZeroconfResolver.CreateListener(new[] { PROTOCOL });
             listener.ServiceFound += Listener_ServiceFound;
         }
 
@@ -45,7 +41,7 @@ namespace Axis.AudioPlayer.Services
                 var properties = service.Properties;
                 if(properties.SelectMany(x => x).Any(prop => prop.Key == "AudioRelay"))
                 {
-                    var device = new Device()
+                    var device = new DiscoveryDevice()
                     {
                         DisplayName = e.DisplayName,
                         IPAddress = e.IPAddresses.Last(),

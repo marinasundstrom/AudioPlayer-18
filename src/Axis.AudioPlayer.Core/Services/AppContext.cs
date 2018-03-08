@@ -23,7 +23,7 @@ namespace Axis.AudioPlayer.Services
 
         public IMessageBus MessageBus { get; private set; }
 
-        public Data.Device Device { get; private set; }
+        public Device Device { get; private set; }
 
         public IPlayerService Player { get; }
 
@@ -49,15 +49,22 @@ namespace Axis.AudioPlayer.Services
             LoadParameters();
             if (Parameters?.Device != null)
             {
-                var device = await DataService.GetDeviceAsync((Guid)Parameters.Device);
-                if (device != null)
+                try
                 {
-                    await SetDevice(device);
-                    if (isResume)
+                    var device = await DataService.GetDeviceAsync((Guid)Parameters.Device);
+                    if (device != null)
                     {
-                        // Is there a better way?
-                        MessageBus.Publish(new UpdatePlayer() { Fetch = true });
+                        await SetDevice(device);
+                        if (isResume)
+                        {
+                            // Is there a better way?
+                            MessageBus.Publish(new UpdatePlayer() { Fetch = true });
+                        }
                     }
+                }
+                catch(Exception e) 
+                {
+                    Debug.WriteLine("Failed to load device", e);
                 }
             }
         }
@@ -86,7 +93,7 @@ namespace Axis.AudioPlayer.Services
             }
         }
 
-        public async Task SetDevice(Data.Device device)
+        public async Task SetDevice(Device device)
         {
             if (Device != null && device.Id == Device.Id)
                 return;
@@ -118,7 +125,7 @@ namespace Axis.AudioPlayer.Services
             File.WriteAllText(FileName, text);
         }
 
-        private async Task InitializePlayer(Data.Device device)
+        private async Task InitializePlayer(Device device)
         {
             await Player.Setup(new Uri($"http://{device.IPAddress}"), device.Username, device.Password);
             await Player.PreloadAsync();

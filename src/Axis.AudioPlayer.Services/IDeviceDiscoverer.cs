@@ -10,16 +10,16 @@ namespace Axis.AudioPlayer.Services
 
         event EventHandler<DeviceDiscoveryEventArgs> DeviceDiscovered;
 
-		IObservable<Device> WhenDeviceDiscovered { get; }
+        IObservable<DiscoveryDevice> WhenDeviceDiscovered { get; }
     }
 
     public class DeviceDiscoveryEventArgs : EventArgs
     {
-        public DeviceDiscoveryEventArgs(Device device)
+        public DeviceDiscoveryEventArgs(DiscoveryDevice device)
         {
             Device = device;
         }
 
-        public Device Device { get; }
+        public DiscoveryDevice Device { get; }
     }
 }

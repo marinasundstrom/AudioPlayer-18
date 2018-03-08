@@ -46,7 +46,7 @@ namespace Axis.AudioPlayer
             MainPage = new MainPage();
         }
 
-        private Task LoadContext() => ServiceLocator.Current.GetInstance<IAppContext>().Initialize();
+        private Task LoadContext() => ServiceLocator.Current.GetInstance<IAppContext>().Initialize(true);
 
         private Task SaveContext() => ServiceLocator.Current.GetInstance<IAppContext>().Save();
     }
