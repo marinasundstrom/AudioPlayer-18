@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage x:Class="Axis.AudioPlayer.Views.AddDeviceCustomPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:Axis.AudioPlayer.Controls" xmlns:local="clr-namespace:Axis.AudioPlayer" xmlns:validation="clr-namespace:Axis.AudioPlayer.Validation" Title="Add custom" BindingContext="{Binding AddCustomDevice, Source={StaticResource Locator}}">
+<ContentPage x:Class="Axis.AudioPlayer.Views.AddDeviceCustomPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:Axis.AudioPlayer.Controls" xmlns:local="clr-namespace:Axis.AudioPlayer" xmlns:validation="clr-namespace:Axis.AudioPlayer.Validation" Title="Add device" BindingContext="{Binding AddCustomDevice, Source={StaticResource Locator}}">
 	<StackLayout>
 		<StackLayout.Margin>
 			<OnPlatform x:TypeArguments="Thickness">

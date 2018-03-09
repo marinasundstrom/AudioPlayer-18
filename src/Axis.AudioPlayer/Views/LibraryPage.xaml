@@ -21,7 +21,10 @@
     <ListView
         ItemTemplate="{StaticResource TrackItemTemplate}"
         ItemsSource="{Binding Tracks}"
-        SelectedItem="{Binding SelectedTrack, Mode=TwoWay}">
+        SelectedItem="{Binding SelectedTrack, Mode=TwoWay}"
+        IsPullToRefreshEnabled="true"
+        RefreshCommand="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsRefreshing}">
         <ListView.Behaviors>
             <behaviors:EventToCommandBehavior
                 Command="{Binding NavigateToTrackCommand}"

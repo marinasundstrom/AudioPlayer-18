@@ -20,7 +20,10 @@
     <ListView
         ItemTemplate="{StaticResource StreamItemTemplate}"
         ItemsSource="{Binding Playlists}"
-        SelectedItem="{Binding SelectedPlaylist, Mode=TwoWay}">
+        SelectedItem="{Binding SelectedPlaylist, Mode=TwoWay}" 
+        IsPullToRefreshEnabled="true"
+        RefreshCommand="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsRefreshing}">
         <ListView.Behaviors>
             <behaviors:EventToCommandBehavior
                 Command="{Binding NavigateToTrackCommand}"

@@ -43,8 +43,15 @@ namespace Axis.AudioPlayer.Services
 
         public async Task Initialize(bool isResume = false)
         {
-            await DataService.InitializeAsync();
-            await Player.InitializeAsync();
+            try
+            {
+                await DataService.InitializeAsync();
+                await Player.InitializeAsync();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Failed to load device", e);
+            }
 
             LoadParameters();
             if (Parameters?.Device != null)
@@ -62,7 +69,7 @@ namespace Axis.AudioPlayer.Services
                         }
                     }
                 }
-                catch(Exception e) 
+                catch (Exception e)
                 {
                     Debug.WriteLine("Failed to load device", e);
                 }

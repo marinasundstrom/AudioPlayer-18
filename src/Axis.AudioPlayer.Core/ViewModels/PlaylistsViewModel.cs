@@ -36,6 +36,21 @@ namespace Axis.AudioPlayer.ViewModels
 			return Update();
 		}
 
+        public bool IsRefreshing
+        {
+            get => isRefreshing;
+            set => SetProperty(ref isRefreshing, value);
+        }
+
+        private RelayCommand refreshCommand;
+        private bool isRefreshing;
+
+        public ICommand RefreshCommand => refreshCommand ?? (refreshCommand = new RelayCommand(async () => {
+            IsRefreshing = true;
+            await Update();
+            IsRefreshing = false;
+        }));
+
 		private async Task Update()
 		{
 			try
@@ -59,7 +74,12 @@ namespace Axis.AudioPlayer.ViewModels
 			catch (Exception)
 			{
 				// Show message: Update failed
-				throw;
+                // Show message: Update failed
+                await PopupService.DisplayAlertAsync("Update failed", "Failed to reload playlists.", new[] {
+                            new PopupAction {
+                                Text = "OK"
+                            }
+                        });
 			}
 		}
 
