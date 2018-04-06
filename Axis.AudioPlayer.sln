@@ -25,9 +25,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioPlayerLib.Tests", "tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axis.AudioPlayer.Services", "src\Axis.AudioPlayer.Services\Axis.AudioPlayer.Services.csproj", "{F31D0934-FA60-43F4-9912-D9996F572C3A}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Axis.AudioPlayer.GTK", "src\GTK\Axis.AudioPlayer.GTK.csproj", "{4034EA62-7A47-4E90-9B39-C882787147F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axis.AudioPlayer.GTK", "src\GTK\Axis.AudioPlayer.GTK.csproj", "{A451A5C9-ACB9-4A67-9238-31872F3B91BA}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Axis.AudioPlayer.macOS", "src\macOS\Axis.AudioPlayer.macOS.csproj", "{11549E2E-9640-43F7-B497-F8C99EEE0DE6}"
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Axis.AudioPlayer.macOS", "src\macOS\Axis.AudioPlayer.macOS.csproj", "{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,22 +109,22 @@ Global
 		{F31D0934-FA60-43F4-9912-D9996F572C3A}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{F31D0934-FA60-43F4-9912-D9996F572C3A}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{F31D0934-FA60-43F4-9912-D9996F572C3A}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{4034EA62-7A47-4E90-9B39-C882787147F1}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{4034EA62-7A47-4E90-9B39-C882787147F1}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{4034EA62-7A47-4E90-9B39-C882787147F1}.Release|iPhone.ActiveCfg = Release|iPhoneSimulator
-		{4034EA62-7A47-4E90-9B39-C882787147F1}.Release|iPhone.Build.0 = Release|iPhoneSimulator
-		{4034EA62-7A47-4E90-9B39-C882787147F1}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{4034EA62-7A47-4E90-9B39-C882787147F1}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{4034EA62-7A47-4E90-9B39-C882787147F1}.Debug|iPhone.ActiveCfg = Debug|iPhoneSimulator
-		{4034EA62-7A47-4E90-9B39-C882787147F1}.Debug|iPhone.Build.0 = Debug|iPhoneSimulator
-		{11549E2E-9640-43F7-B497-F8C99EEE0DE6}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{11549E2E-9640-43F7-B497-F8C99EEE0DE6}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{11549E2E-9640-43F7-B497-F8C99EEE0DE6}.Release|iPhone.ActiveCfg = Release|iPhoneSimulator
-		{11549E2E-9640-43F7-B497-F8C99EEE0DE6}.Release|iPhone.Build.0 = Release|iPhoneSimulator
-		{11549E2E-9640-43F7-B497-F8C99EEE0DE6}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{11549E2E-9640-43F7-B497-F8C99EEE0DE6}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{11549E2E-9640-43F7-B497-F8C99EEE0DE6}.Debug|iPhone.ActiveCfg = Debug|iPhoneSimulator
-		{11549E2E-9640-43F7-B497-F8C99EEE0DE6}.Debug|iPhone.Build.0 = Debug|iPhoneSimulator
+		{A451A5C9-ACB9-4A67-9238-31872F3B91BA}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{A451A5C9-ACB9-4A67-9238-31872F3B91BA}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{A451A5C9-ACB9-4A67-9238-31872F3B91BA}.Release|iPhone.ActiveCfg = Release|iPhoneSimulator
+		{A451A5C9-ACB9-4A67-9238-31872F3B91BA}.Release|iPhone.Build.0 = Release|iPhoneSimulator
+		{A451A5C9-ACB9-4A67-9238-31872F3B91BA}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{A451A5C9-ACB9-4A67-9238-31872F3B91BA}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{A451A5C9-ACB9-4A67-9238-31872F3B91BA}.Debug|iPhone.ActiveCfg = Debug|iPhoneSimulator
+		{A451A5C9-ACB9-4A67-9238-31872F3B91BA}.Debug|iPhone.Build.0 = Debug|iPhoneSimulator
+		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Release|iPhone.ActiveCfg = Release|iPhoneSimulator
+		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Release|iPhone.Build.0 = Release|iPhoneSimulator
+		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Debug|iPhone.ActiveCfg = Debug|iPhoneSimulator
+		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Debug|iPhone.Build.0 = Debug|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D705AC8D-9D4A-4AD9-B4C2-EEE80F36CB7C} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
@@ -137,7 +137,7 @@ Global
 		{00F29A51-A463-4B06-B0AE-5115AC3BAE47} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
 		{D99B4866-EF5F-4911-AE8A-E4E4BA2CC633} = {773C7445-1821-47B4-96C4-41EBD7E39FF4}
 		{F31D0934-FA60-43F4-9912-D9996F572C3A} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
-		{4034EA62-7A47-4E90-9B39-C882787147F1} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
-		{11549E2E-9640-43F7-B497-F8C99EEE0DE6} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
+		{A451A5C9-ACB9-4A67-9238-31872F3B91BA} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
+		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
 	EndGlobalSection
 EndGlobal
