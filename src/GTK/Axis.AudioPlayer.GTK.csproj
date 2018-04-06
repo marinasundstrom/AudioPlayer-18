@@ -248,10 +248,6 @@
       <Project>{5E95AEE4-4A55-4B84-A2BC-10325E5269EA}</Project>
       <Name>MvvmUtils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Axis.AudioPlayer.Data\Axis.AudioPlayer.Data.csproj">
-      <Project>{3323A81C-9BC3-45CC-A56F-1D79B3DFC546}</Project>
-      <Name>Axis.AudioPlayer.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AudioPlayerLib\AudioPlayerLib.csproj">
       <Project>{00F29A51-A463-4B06-B0AE-5115AC3BAE47}</Project>
       <Name>AudioPlayerLib</Name>
@@ -259,6 +255,10 @@
     <ProjectReference Include="..\Axis.AudioPlayer.Services\Axis.AudioPlayer.Services.csproj">
       <Project>{F31D0934-FA60-43F4-9912-D9996F572C3A}</Project>
       <Name>Axis.AudioPlayer.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Axis.AudioPlayer.Services.Impl\Axis.AudioPlayer.Services.Impl.csproj">
+      <Project>{95EBE2FD-0EA0-4713-B61D-0A479576AF3D}</Project>
+      <Name>Axis.AudioPlayer.Services.Impl</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

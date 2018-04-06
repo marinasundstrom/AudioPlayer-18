@@ -27,7 +27,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axis.AudioPlayer.Services",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axis.AudioPlayer.GTK", "src\GTK\Axis.AudioPlayer.GTK.csproj", "{A451A5C9-ACB9-4A67-9238-31872F3B91BA}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Axis.AudioPlayer.macOS", "src\macOS\Axis.AudioPlayer.macOS.csproj", "{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}"
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Axis.AudioPlayer.macOS", "src\macOS\Axis.AudioPlayer.macOS.csproj", "{B2355568-6925-4612-8E5C-D6420868BC93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axis.AudioPlayer.Services.Impl", "src\Axis.AudioPlayer.Services.Impl\Axis.AudioPlayer.Services.Impl.csproj", "{95EBE2FD-0EA0-4713-B61D-0A479576AF3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,14 +119,22 @@ Global
 		{A451A5C9-ACB9-4A67-9238-31872F3B91BA}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{A451A5C9-ACB9-4A67-9238-31872F3B91BA}.Debug|iPhone.ActiveCfg = Debug|iPhoneSimulator
 		{A451A5C9-ACB9-4A67-9238-31872F3B91BA}.Debug|iPhone.Build.0 = Debug|iPhoneSimulator
-		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Release|iPhone.ActiveCfg = Release|iPhoneSimulator
-		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Release|iPhone.Build.0 = Release|iPhoneSimulator
-		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Debug|iPhone.ActiveCfg = Debug|iPhoneSimulator
-		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3}.Debug|iPhone.Build.0 = Debug|iPhoneSimulator
+		{B2355568-6925-4612-8E5C-D6420868BC93}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{B2355568-6925-4612-8E5C-D6420868BC93}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{B2355568-6925-4612-8E5C-D6420868BC93}.Release|iPhone.ActiveCfg = Release|iPhoneSimulator
+		{B2355568-6925-4612-8E5C-D6420868BC93}.Release|iPhone.Build.0 = Release|iPhoneSimulator
+		{B2355568-6925-4612-8E5C-D6420868BC93}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{B2355568-6925-4612-8E5C-D6420868BC93}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{B2355568-6925-4612-8E5C-D6420868BC93}.Debug|iPhone.ActiveCfg = Debug|iPhoneSimulator
+		{B2355568-6925-4612-8E5C-D6420868BC93}.Debug|iPhone.Build.0 = Debug|iPhoneSimulator
+		{95EBE2FD-0EA0-4713-B61D-0A479576AF3D}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{95EBE2FD-0EA0-4713-B61D-0A479576AF3D}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{95EBE2FD-0EA0-4713-B61D-0A479576AF3D}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{95EBE2FD-0EA0-4713-B61D-0A479576AF3D}.Release|iPhone.Build.0 = Release|Any CPU
+		{95EBE2FD-0EA0-4713-B61D-0A479576AF3D}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{95EBE2FD-0EA0-4713-B61D-0A479576AF3D}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{95EBE2FD-0EA0-4713-B61D-0A479576AF3D}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{95EBE2FD-0EA0-4713-B61D-0A479576AF3D}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D705AC8D-9D4A-4AD9-B4C2-EEE80F36CB7C} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
@@ -138,6 +148,7 @@ Global
 		{D99B4866-EF5F-4911-AE8A-E4E4BA2CC633} = {773C7445-1821-47B4-96C4-41EBD7E39FF4}
 		{F31D0934-FA60-43F4-9912-D9996F572C3A} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
 		{A451A5C9-ACB9-4A67-9238-31872F3B91BA} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
-		{EBFF7D4B-A390-4B00-8E3B-E70EAFC16BB3} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
+		{B2355568-6925-4612-8E5C-D6420868BC93} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
+		{95EBE2FD-0EA0-4713-B61D-0A479576AF3D} = {F396CB22-03BC-4176-A61F-DF0F18A215A7}
 	EndGlobalSection
 EndGlobal

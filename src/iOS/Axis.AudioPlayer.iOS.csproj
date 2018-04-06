@@ -247,6 +247,10 @@
       <Project>{F31D0934-FA60-43F4-9912-D9996F572C3A}</Project>
       <Name>Axis.AudioPlayer.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Axis.AudioPlayer.Services.Impl\Axis.AudioPlayer.Services.Impl.csproj">
+      <Project>{95EBE2FD-0EA0-4713-B61D-0A479576AF3D}</Project>
+      <Name>Axis.AudioPlayer.Services.Impl</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\advertising_24.png" />
