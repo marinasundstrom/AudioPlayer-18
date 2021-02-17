@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("Axis.AudioPlayer.Droid.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("AudioPlayer.Droid.Resource", IsApplication=true)]
 
-namespace Axis.AudioPlayer.Droid
+namespace AudioPlayer.Droid
 {
 	
 	
@@ -26,7 +26,7 @@ namespace Axis.AudioPlayer.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Axis.AudioPlayer.Droid.Resource.Attribute.actionBarSize;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::AudioPlayer.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation

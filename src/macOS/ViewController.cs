@@ -3,7 +3,7 @@
 using AppKit;
 using Foundation;
 
-namespace Axis.AudioPlayer.macOS
+namespace AudioPlayer.macOS
 {
     public partial class ViewController : NSViewController
     {

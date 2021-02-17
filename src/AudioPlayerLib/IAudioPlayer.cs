@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Axis.AudioPlayer
+namespace AudioPlayer
 {
     public interface IAudioPlayer
     {

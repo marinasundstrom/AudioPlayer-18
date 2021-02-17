@@ -3,7 +3,7 @@ using Foundation;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.MacOS;
 
-namespace Axis.AudioPlayer.macOS
+namespace AudioPlayer.macOS
 {
     [Register("AppDelegate")]
     public class AppDelegate : FormsApplicationDelegate

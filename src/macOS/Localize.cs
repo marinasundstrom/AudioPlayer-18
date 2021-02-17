@@ -2,7 +2,7 @@
 using System.Threading;
 using Foundation;
 
-namespace Axis.AudioPlayer
+namespace AudioPlayer
 {
     public class Localize : ILocalize
     {

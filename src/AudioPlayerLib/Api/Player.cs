@@ -4,7 +4,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Axis.AudioPlayer.Api
+namespace AudioPlayer.Api
 {
     public class Player : ApiBase
 	{

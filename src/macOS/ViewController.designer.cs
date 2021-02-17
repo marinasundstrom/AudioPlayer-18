@@ -6,7 +6,7 @@
 //
 using Foundation;
 
-namespace Axis.AudioPlayer.macOS
+namespace AudioPlayer.macOS
 {
     [Register("ViewController")]
     partial class ViewController

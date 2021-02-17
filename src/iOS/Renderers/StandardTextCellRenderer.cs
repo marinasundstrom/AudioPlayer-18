@@ -1,5 +1,5 @@
-﻿using Axis.AudioPlayer.iOS;
-using Axis.AudioPlayer.iOS.Renderers;
+﻿using AudioPlayer.iOS;
+using AudioPlayer.iOS.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
@@ -7,7 +7,7 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(TextCell), typeof(StandardTextCellRenderer))]
 [assembly: ExportRenderer(typeof(ImageCell), typeof(StandardImageCellRenderer))]
 
-namespace Axis.AudioPlayer.iOS.Renderers
+namespace AudioPlayer.iOS.Renderers
 {
     public class StandardTextCellRenderer : TextCellRenderer
     {

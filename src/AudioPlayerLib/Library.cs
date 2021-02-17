@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Axis.AudioPlayer
+namespace AudioPlayer
 {
     public class Library : ILibrary
     {

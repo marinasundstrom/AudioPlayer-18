@@ -3,7 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Axis.AudioPlayer.Api.Vapix
+namespace AudioPlayer.Api.Vapix
 {
     public class AudioRelay : ApiBase
     {

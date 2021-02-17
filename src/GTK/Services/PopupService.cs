@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Axis.AudioPlayer.Services
+namespace AudioPlayer.Services
 {
     public class PopupService : IPopupService
     {

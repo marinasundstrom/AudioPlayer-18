@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Android.App;
 using Plugin.CurrentActivity;
 
-namespace Axis.AudioPlayer.Services
+namespace AudioPlayer.Services
 {
     public class PopupService : IPopupService
     {

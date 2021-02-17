@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace Axis.AudioPlayer.iOS
+namespace AudioPlayer.iOS
 {
     public class Application
     {

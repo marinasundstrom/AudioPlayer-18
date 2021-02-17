@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UIKit;
 
-namespace Axis.AudioPlayer.Services
+namespace AudioPlayer.Services
 {
     public class PopupService : IPopupService
     {

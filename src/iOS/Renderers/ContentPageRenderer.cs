@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Axis.AudioPlayer.iOS;
+using AudioPlayer.iOS;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 //[assembly: ExportRenderer(typeof(ContentPage), typeof(ContentPageRenderer))]
 
-namespace Axis.AudioPlayer.iOS.Renderers
+namespace AudioPlayer.iOS.Renderers
 {
 	public class ContentPageRenderer : PageRenderer
 	{

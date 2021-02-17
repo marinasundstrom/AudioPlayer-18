@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Threading;
 
-namespace Axis.AudioPlayer
+namespace AudioPlayer
 {
     public class Localize : ILocalize
     {

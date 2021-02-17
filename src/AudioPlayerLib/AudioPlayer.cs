@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using WebSocketSharp;
 
-namespace Axis.AudioPlayer
+namespace AudioPlayer
 {
     public class AudioPlayer : IAudioPlayer
     {

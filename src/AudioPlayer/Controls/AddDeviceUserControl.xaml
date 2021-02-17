@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Class="AudioPlayer.Controls.AddDeviceUserControl" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:validation="clr-namespace:AudioPlayer.Validation">
+	<StackLayout>
+		<Entry Placeholder="Username" Text="{Binding Username}">
+			<Entry.Behaviors>
+				<validation:EntryValidationBehavior PropertyName="Username" />
+			</Entry.Behaviors>
+		</Entry>
+		<Entry IsPassword="true" Placeholder="Password" Text="{Binding Password}">
+			<Entry.Behaviors>
+				<validation:EntryValidationBehavior PropertyName="Password" />
+			</Entry.Behaviors>
+		</Entry>
+	</StackLayout>
+</ContentView>

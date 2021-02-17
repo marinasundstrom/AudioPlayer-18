@@ -1,4 +1,4 @@
-﻿namespace Axis.AudioPlayer
+﻿namespace AudioPlayer
 {
     public class Track
     {

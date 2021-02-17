@@ -1,6 +1,6 @@
 ﻿using AppKit;
 
-namespace Axis.AudioPlayer.macOS
+namespace AudioPlayer.macOS
 {
     static class MainClass
     {

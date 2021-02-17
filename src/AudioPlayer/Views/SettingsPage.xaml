@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="AudioPlayer.Views.SettingsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    Title="Settings"
+    ios:Page.UseSafeArea="true"
+    BindingContext="{Binding Settings, Source={StaticResource Locator}}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="SettingsItemTemplate">
+                <TextCell Command="{Binding Command}" Text="{Binding Title}" />
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ListView ItemTemplate="{StaticResource SettingsItemTemplate}" ItemsSource="{Binding MenuItems}" />
+    </ContentPage.Content>
+</ContentPage>

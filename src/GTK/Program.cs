@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.GTK;
 
-namespace Axis.AudioPlayer.GTK
+namespace AudioPlayer.GTK
 {
     class Program
     {

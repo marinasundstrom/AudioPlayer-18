@@ -1,8 +1,8 @@
-﻿using Axis.AudioPlayer.iOS;
+﻿using AudioPlayer.iOS;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-namespace Axis.AudioPlayer.iOS.Renderers
+namespace AudioPlayer.iOS.Renderers
 {
     public class StandardImageCellRenderer : ImageCellRenderer
     {

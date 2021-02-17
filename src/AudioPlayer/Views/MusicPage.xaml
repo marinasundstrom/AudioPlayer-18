@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AudioPlayer.Views.MusicPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:AudioPlayer.Behaviors"
+    xmlns:converters="clr-namespace:AudioPlayer.Converters"
+    xmlns:local="clr-namespace:AudioPlayer"
+    Title="Music"
+    BindingContext="{Binding Music, Source={StaticResource Locator}}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:MusicButtonIconConverter x:Key="MusicButtonIconConverter" />
+
+            <DataTemplate x:Key="ItemTemplate">
+                <ImageCell
+                    ImageSource="{Binding Id, Converter={StaticResource MusicButtonIconConverter}}"
+                    StyleId="disclosure-button"
+                    Text="{Binding Name}" />
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ListView ItemTemplate="{StaticResource ItemTemplate}" ItemsSource="{Binding Items}" ItemSelected="Handle_ItemSelected">
+        <ListView.Behaviors>
+            <behaviors:EventToCommandBehavior
+                Command="{Binding NavigateToItemCommand}"
+                EventArgsPropertyPath="Item"
+                EventName="ItemTapped" />
+        </ListView.Behaviors>
+    </ListView>
+</ContentPage>

@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Axis.AudioPlayer;
+using AudioPlayer;
 using Xunit;
 
 namespace AudioPlayerLib.Tests
