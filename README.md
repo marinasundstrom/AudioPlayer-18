@@ -16,7 +16,7 @@ Although it uses the word Axis, it is in no way affiliated with the company.
 
 I originally asked if I could publish the source code. The only thing that they requested of me in return was to removed the API calls just to be sure. At first, I thought I could just remove them and polish stuff up, but it proved not to be a fun thing to do. The API client layer is not the prettiest that I have made. So I just left the project there.
 
-Now, in 2021, I figure that the APIs are dated, and probably replaced by Axis new cloud initiative. So here is the code!
+Now, in 2022, I figure that the APIs are dated, and probably replaced by Axis new cloud initiative. So here is the code!
 
 There is not guarantee that this app will work with current speakers and firmware.
 
