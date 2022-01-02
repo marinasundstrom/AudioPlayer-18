@@ -22,7 +22,7 @@ There is not guarantee that this app will work with current speakers and firmwar
 
 ## The project
 
-The project consists of a Xamarin.Forms app.
+The project consists of a Xamarin.Forms app that is structured according to the Model-View-ViewModel (MVVM) pattern. The MVVM library is custom-made. The app also uses Reactive Extensions (RX).
 
 The app invokes some undocumented Web APIs that was being used by the original Web App that is on-device.
 
